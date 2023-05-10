@@ -1,48 +1,94 @@
 <html>
-<head>
-  <title>Inspiring Quotes</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background-image: url('white.png');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: 100% 100%;
-    }
+  <head>
+    <title>Inspiring Quotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        background-image: url(stars.jfif);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
    
-    h1 {
-      border-style: outset;
-      color: white;
-      font-family:serif ;
-      background-color: black;
-    }
-    p {
-      font-style: italic;
-      font-size:xx-large;
-      margin: 20px 0;
-      color: aliceblue;
-      font-family: 'Times New Roman', Times, serif;
-    }
+      h1 {
+        border-style: outset;
+        color: white;
+        font-family:serif ;
+        background-color: rgb(6, 0, 5);
+        /* Use fluid units for font size and padding */
+        font-size: 4vw;
+        padding: 2vh 0;
+      }
 
-    button{
-      background-color: rgb(15, 15, 15);
-      color: rgba(252, 247, 247, 0.719);
-      font-size: 24px;
-      padding: 10px 18px;
-      border-radius: 25px;
-      font-family: serif;
-    }
+      p {
+        font-style: italic;
+        font-size: 5vw;
+        margin: 2vh 0;
+        color: rgba(243, 251, 1, 0.923);
+        font-family: 'Times New Roman', Times, serif;
+      }
 
-    button:hover{
-      background-color: white;
-      color: black;
-    }
+      button{
+        background-color: rgb(15, 15, 15);
+        color: rgba(252, 247, 247, 0.719);
+        /* Use fluid units for font size and padding */
+        font-size: 3vw;
+        padding: 2vh 1.5vw;
+        border-radius: 2.5vw;
+        font-family: serif;
+      }
 
-    button:active{
-      transform: translateY(4px);
-    }
+      button:hover{
+        background-color: white;
+        color: black;
+      }
 
+      button:active{
+        transform: translateY(4px);
+      }
+
+      /* Media queries */
+      @media screen and (max-width: 768px) {
+        /* Adjust styles for smaller screens */
+        h1 {
+          /* Use fluid units for font size and padding */
+          font-size: 8vw;
+          padding: 3vh 0;
+        }
+
+        p {
+          font-size: 6vw;
+          margin: 3vh 0;
+        }
+
+        button {
+          font-size: 4vw;
+          padding: 2vh 1vw;
+          border-radius: 2vw;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        /* Adjust styles for even smaller screens */
+        h1 {
+        /* Use fluid units for font size and padding */
+          font-size: 12vw;
+          padding: 5vh 0;
+        }
+
+        p {
+          font-size: 8vw;
+          margin: 5vh 0;
+        }
+
+        button {
+          font-size: 6vw;
+          padding: 3vh 1vw;
+          border-radius: 1.5vw;
+        }
+      }
 
    
   </style>
@@ -53,8 +99,31 @@
   <div id="quote-container">
     <!-- This div element will be filled with a random quote using JavaScript -->
   </div>
-  <button onclick="showRandomQuote()">Show another quote</button>
-  <script>
+  <button style="margin-bottom: 4hv; /* Use fluid unit for margin */
+        background-color: rgb(15, 15, 15);
+        color: rgba(252, 247, 247, 0.719);
+        /* Use fluid units for font size and padding */
+        font-size: 3vw;
+        padding: 2vh 1.5vw;
+        border-radius: 2.5vw;
+        font-family: serif;"
+        onclick="showRandomQuote()">Show another quote
+      </button>
+      <div style="height: 50%; /* Use fluid unit for height */
+      overflow: auto; /* Add scrolling when content exceeds container height */">
+      <div style="height: 200px; /* Set a fixed height for the container */
+      overflow: auto; /* Add scrolling when content exceeds container height */">
+     <div class="dropdown">
+     <button class="dropbtn">Contact</button>
+     <div class="dropdown-content">
+     <a href="#">Email</a>
+     <a href="#">Phone</a>
+     <a href="#">Social Media</a>
+     </div>
+    </div>
+   </div>
+
+    <script>
     const quotes = [
             'The unexamined life is not worth living. - Socrates',
             'The only true wisdom is in knowing you know nothing. - Socrates',
@@ -2114,23 +2183,22 @@
             'Drunkeness is nothing but voluntary madness. - Seneca',
             'We never reflect how pleasant it is to ask for nothing. - Seneca',
             'Just as I shall select my ship when I am about to go on a voyage, or my house when I propose to take residence, so shall I choose my death when I am about to depart from life. - Seneca',
-                     
-                              ];
+      ];
    
-   
-    function showRandomQuote() {
-      // Generate a random index between 0 and the number of quotes
-      const index = Math.floor(Math.random() * quotes.length);
+
+      function showRandomQuote() {
+        // Generate a random index between 0 and the number of quotes
+        const index = Math.floor(Math.random() * quotes.length);
      
-      // Get the quote at the random index
-      const quote = quotes[index];
+        // Get the quote at the random index
+        const quote = quotes[index];
      
-      // Update the HTML of the quote container element with the random quote
-      document.getElementById("quote-container").innerHTML = `<p>${quote}</p>`;
-    }
-   
-    // Show a random quote when the page is loaded
-    showRandomQuote();
-  </script>
-</body>
+        // Update the HTML of the quote container element with the random quote
+        document.getElementById("quote-container").innerHTML = `<p>${quote}</p>`;
+      }
+     
+      // Show a random quote when the page is loaded
+      showRandomQuote();
+    </script>
+  </body>
 </html>
