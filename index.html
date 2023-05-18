@@ -1,96 +1,119 @@
 <html>
-  <head>
-    <title>Inspiring Quotes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-        font-family: sans-serif;
-        text-align: center;
-        background-image: url(stars.jfif);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-      }
-   
+<head>
+  <title>Inspiring Quotes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-image: url(stars.jfif);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+
+    h1 {
+      border-style: outset;
+      color: white;
+      font-family: serif;
+      background-color: rgb(6, 0, 5);
+      /* Use fluid units for font size and padding */
+      font-size: 4vw;
+      padding: 2vh 0;
+    }
+
+    p {
+      font-style: italic;
+      font-size: 5vw;
+      margin: 2vh 0;
+      color: rgba(231, 7, 7, 0.704);
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    button {
+      background-color: rgb(15, 15, 15);
+      color: rgba(252, 247, 247, 0.719);
+      /* Use fluid units for font size and padding */
+      font-size: 3vw;
+      padding: 2vh 1.5vw;
+      border-radius: 2.5vw;
+      font-family: serif;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    button:active {
+      transform: translateY(4px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Media queries */
+    @media screen and (max-width: 768px) {
+      /* Adjust styles for smaller screens */
       h1 {
-        border-style: outset;
-        color: white;
-        font-family:serif ;
-        background-color: rgb(6, 0, 5);
         /* Use fluid units for font size and padding */
-        font-size: 4vw;
-        padding: 2vh 0;
+        font-size: 8vw;
+        padding: 3vh 0;
       }
 
       p {
-        font-style: italic;
-        font-size: 5vw;
-        margin: 2vh 0;
-        color: rgba(243, 251, 1, 0.923);
-        font-family: 'Times New Roman', Times, serif;
+        font-size: 6vw;
+        margin: 3vh 0;
       }
 
-      button{
-        background-color: rgb(15, 15, 15);
-        color: rgba(252, 247, 247, 0.719);
+      button {
+        font-size: 4vw;
+        padding: 2vh 1vw;
+        border-radius: 2vw;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      /* Adjust styles for even smaller screens */
+      h1 {
         /* Use fluid units for font size and padding */
-        font-size: 3vw;
-        padding: 2vh 1.5vw;
-        border-radius: 2.5vw;
-        font-family: serif;
+        font-size: 12vw;
+        padding: 5vh 0;
       }
 
-      button:hover{
-        background-color: white;
-        color: black;
+      p {
+        font-size: 8vw;
+        margin: 5vh 0;
       }
 
-      button:active{
-        transform: translateY(4px);
+      button {
+        font-size: 6vw;
+        padding: 3vh 1vw;
+        border-radius: 1.5vw;
       }
-
-      /* Media queries */
-      @media screen and (max-width: 768px) {
-        /* Adjust styles for smaller screens */
-        h1 {
-          /* Use fluid units for font size and padding */
-          font-size: 8vw;
-          padding: 3vh 0;
-        }
-
-        p {
-          font-size: 6vw;
-          margin: 3vh 0;
-        }
-
-        button {
-          font-size: 4vw;
-          padding: 2vh 1vw;
-          border-radius: 2vw;
-        }
-      }
-
-      @media screen and (max-width: 480px) {
-        /* Adjust styles for even smaller screens */
-        h1 {
-        /* Use fluid units for font size and padding */
-          font-size: 12vw;
-          padding: 5vh 0;
-        }
-
-        p {
-          font-size: 8vw;
-          margin: 5vh 0;
-        }
-
-        button {
-          font-size: 6vw;
-          padding: 3vh 1vw;
-          border-radius: 1.5vw;
-        }
-      }
-
-   
+    }
   </style>
 </head>
 
@@ -108,24 +131,18 @@
         border-radius: 2.5vw;
         font-family: serif;"
         onclick="showRandomQuote()">Show another quote
-      </button>
-      <div style="height: 50%; /* Use fluid unit for height */
-      overflow: auto; /* Add scrolling when content exceeds container height */">
-      <div style="height: 200px; /* Set a fixed height for the container */
-      overflow: auto; /* Add scrolling when content exceeds container height */">
-     <div class="dropdown">
-     <button class="dropbtn">Contact</button>
-     <div class="dropdown-content">
-     <a href="#">Email</a>
-     <a href="#">Phone</a>
-     <a href="#">Social Media</a>
-     </div>
+  </button>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="toggleDropdown()">Contact</button>
+    <div class="dropdown-content" id="dropdownContent">
+      <a href="mailto:youremail@example.com">Email</a>
+      <a href="https://instagram.com/qu0tivation?igshid=MzRlODBiNWFlZA==">Instagram</a>
     </div>
-   </div>
+  </div>
 
-    <script>
+  <script>
     const quotes = [
-            'The unexamined life is not worth living. - Socrates',
+    'The unexamined life is not worth living. - Socrates',
             'The only true wisdom is in knowing you know nothing. - Socrates',
             'To be without some of the things you want is an indispensable part of happiness. - Bertrand Russell',
             'The only thing necessary for the triumph of evil is for good men to do nothing. - Edmund Burke',
@@ -139,7 +156,7 @@
             'Ignorance is the curse of God; knowledge is the wing wherewith we fly to heaven. - William Shakespeare',
             'Not everything that is faced can be changed, but nothing can be changed until it is faced. - James Baldwin',
             'You are the only person who can take responsibility for your life. You are the only person who can define the meaning of your life. - Jordan Peterson',
-            'Stand up straight with your shoulders back. - Jordan peterson',
+            'Stand up straight with your shoulders back. - Jordan Peterson',
             'The purpose of life is finding the largest burden that you can bear and bearing it. - Jordan Peterson',
             'The privilege of a lifetime is to become who you truly are. - Jordan Peterson',
             'The things you do not want to do, but must, are precisely the things that define you. - Jordan Peterson',
@@ -159,7 +176,7 @@
             'It is well enough that people of the nation do not understand our banking and monetary system, for if they did, I believe there would be a revolution before tomorrow morning. - Henry Ford',
             'Do not miss the forest for the trees. Every action you take is molding who you are as a person. Every time you sleep in, every time you are undisciplined, you are training yourself that it`s okay. A downward spiral to mediocrity. - Andrew Tate',
             'Every day is another chance to decide to change your life. Yet you allow life to beat you down to your knees. Distracting you from everything you want. Break the trance now. - Andrew Tate',
-            'One year ago is forever. Genuinely, look back one year ago today. Is your life radically diferrent? Did it surpass your wildest dreams? Anything less than an absolute yes is utter failure. - Andrew Tate',
+            'One year ago is forever. Genuinely, look back one year ago today. Is your life radically different? Did it surpass your wildest dreams? Anything less than an absolute yes is utter failure. - Andrew Tate',
             'The life you want is right in front of your face. You just have to stop thinking life will come to you. You must come to life. Giving 1000% effort every day. Only then will you become a force of nature. - Andrew Tate',
             'When you are pushing hard to achieve as much as you individually can, you feel happy inside even if you don`t have the results yet. - Andrew Tate',
             'If the people in your circle don`t inspire you, they`re not your circle. They`re your cage. - Andrew Tate',
@@ -167,17 +184,17 @@
             'A boy becomes a man when he masters the art of discipline. - Tristan Tate',
             'Understand the energy of people can be stolen from them.  If you make someone angry so that they think about you, while you refuse to think of them back, they are converting calories into thoughts that have your name on them. They are giving you power. - Andrew Tate',
             'Quitters cannot be saved. If God Himself gave a quitter a guarantee at one billion dollars upon the completion of a task, the quitter would still find a way to end up broke. - Andrew Tate',
-            'Society has conditioned men to believe we should be happy. We are not children. Life is not a playground. "THERE`S  SOMETHING WRONG WITH YOU IF YOU`RE NOT"  Wrong. I know successful deticated brilliant men who are not giggling like little girls. Fuck happy. Chase more. - Andrew Tate',
-            'I know talented men who are unsuccessful. I know smart men who are unsuccessful. I do not know a single man who is genuinely persistent that does`nt have a fantastic life. - Andrew Tate',
+            'Society has conditioned men to believe we should be happy. We are not children. Life is not a playground. "THERE`S  SOMETHING WRONG WITH YOU IF YOU`RE NOT"  Wrong. I know successful dedicated brilliant men who are not giggling like little girls. Fuck happy. Chase more. - Andrew Tate',
+            'I know talented men who are unsuccessful. I know smart men who are unsuccessful. I do not know a single man who is genuinely persistent that doesn`t have a fantastic life. - Andrew Tate',
             'Mental fragility is promoted at every opportunity and people wonder why depression increases. Because it`s taboo to tell people to think stronger, be stronger or act stronger. - Andrew Tate',
             'The software which controls your mind was installed by society, by those you respected and obeyed. Have you ever analysed why you think the way you do, and decided to change the code? - Andrew Tate',
             'You can fight the realities of the world and lose. Or you can accept them and become successful. You decide... - Andrew Tate',
             'Cowardice is the modern plague of man. - Andrew Tate',
             'It is hard to start the gym, easy to keep going. Hard to make money, easy to turn it into more money. Fire is difficult to start. But once it`s raging, it spreads extremely easily. Success is exactly the same. - Andrew Tate',
-            'You`re influenced by your environment wether you accept it or not. Only allow strength and ambition? Your life will reflect it. - Andrew Tate',
-            'Talent does`nt matter until the very end. Plus most people haven`t worked hard enough at anything to identify if they are talented or not. Most people don`t know their own talents. - Andrew Tate',
+            'You`re influenced by your environment whether you accept it or not. Only allow strength and ambition? Your life will reflect it. - Andrew Tate',
+            'Talent doesn`t matter until the very end. Plus most people haven`t worked hard enough at anything to identify if they are talented or not. Most people don`t know their own talents. - Andrew Tate',
             'We will either live the life of our dreams or die trying. Will you? - Andrew, Tristan Tate',
-            'The king`s limited movement in chess represents limitations in life as a man. A queen has unlimited movement because of her beauty. Party on a yaught? You gota earn it. One square at a time... - Andrew Tate',
+            'The king`s limited movement in chess represents limitations in life as a man. A queen has unlimited movement because of her beauty. Party on a yacht? You gotta earn it. One square at a time... - Andrew Tate',
             'Poor people are forced to live slow lives. Rich people live very fast lives. Speed is immensely powerful. - Andrew Tate',
             'You are being programmed. You cannot stop it. You cannot stop the programming but you can choose what you hear and experience. You can choose what and who programs your mind. - Andrew Tate',
             'There is no light without dark. There is no joy without pain. You can`t enjoy a rainbow...   Without a little rain. - Andrew Tate',
@@ -194,20 +211,20 @@
             'By all means marry; If you get a good wife, you will become happy; If you get a bad one, you will become a philosopher. - Socrates',
             'He who is not contented with what he has, would not be contented with what he would like to have. - Socrates',
             'Be slow to fall into friendship, but when you are in, continue firm and constant. - Socrates',
-            'If you don`t get what you want, you suffer; If you get what you don`t want, you suffer, even when you get exactly what you want, you still suffer because you can`t hold onto it forever. Your mind is your pedicament. It wants to be free of charge. Free of pain, free of the obligations of life and death. But change is law and no amount of pretending will alter that reality. - Socrates',
+            'If you don`t get what you want, you suffer; If you get what you don`t want, you suffer, even when you get exactly what you want, you still suffer because you can`t hold onto it forever. Your mind is your predicament. It wants to be free of charge. Free of pain, free of the obligations of life and death. But change is law and no amount of pretending will alter that reality. - Socrates',
             'Sometimes you put walls up not to keep people out, but to see who cares enough to break them down. - Socrates',
-            'The children now love luxury; They have bad manners, contempt for authority; They show disrespect for elders and love chatter is place of exercise. Children are now tyrants, not the servants of their households. They contradict their parents, chatter before company, gobble up dainties at the table, cross their legs, and tyrannize their teachers. - Socrates',
+            'The children now love luxury; They have bad manners, contempt for authority; They show disrespect for elders and love chatter in place of exercise. Children are now tyrants, not the servants of their households. They contradict their parents, chatter before company, gobble up dainties at the table, cross their legs, and tyrannize their teachers. - Socrates',
             'No man has the right to be an amateur in the matter of physical training. It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable. - Socrates',
             'The secret of happiness, you see, is not found in seeking more, but in developing the capacity to enjoy less. - Socrates',
             'Let him who would move the world first move himself. - Socrates',
             'Contentment is natural wealth, luxury is artificial poverty. - Socrates',
             'Death may be the greatest of all human blessings. - Socrates',
             'Employ your time in improving yourself by other men`s writings so that you shall come easily by what others have laboured hard for. - Socrates',
-            'The hour of departure has arrived, and we go our seperate ways, I to die, and you to live. Which of these two is betteronly God knows. - Socrates',
+            'The hour of departure has arrived, and we go our separate ways, I to die, and you to live. Which of these two is better only God knows. - Socrates',
             'Do not do to others what angers you if done to you by others. - Socrates',
             'I am not an Athenian or a Greek, but a citizen of the world. - Socrates',
             'The only good is knowledge and the only evil is ignorance. - Socrates',
-            'Every action has it`s pleasures and it`s price. - Socrates',
+            'Every action has its pleasures and its price. - Socrates',
             'I examined the poets, and I look on them as people whose talent overawes both themselves and others, people who present themselves as wise men and are taken as such, when they are nothing of the sort. From poets, I moved to artists. No one was more ignorant about the arts than I; no one was more convinced that artists possessed really beautiful secrets. However, I noticed that their condition was no better than that of the poets and that both of them have the same misconceptions. Because the most skillful among them excel in their specialty, they look upon themselves as the wisest of men. In my eyes, this presumption completely tarnished their knowledge. As a result, putting myself in the place of the oracle and asking myself what I would prefer to be — what I was or what they were, to know what they have learned or to know that I know nothing — I replied to myself and to the god: I wish to remain who I am. We do not know — neither the sophists, nor the orators, nor the artists, nor I— what the True, the Good, and the Beautiful are. But there is this difference between us: although these people know nothing, they all believe they know something; whereas, I, if I know nothing, at least have no doubts about it. As a result, all this superiority in wisdom which the oracle has attributed to me reduces itself to the single point that I am strongly convinced that I am ignorant of what I do not know. - Socrates',
             'Prefer knowledge to wealth, for the one is transitory, the other perpetual. - Socrates',
             'We cannot live better than in seeking to become better. - Socrates',
@@ -220,7 +237,7 @@
             'Excellence is never an accident. It is always the result of high intention, sincere effort, and intelligent execution; it represents the wise choice of many alternatives - choice, not chance, determines your destiny. - Aristotle',
             'Anybody can become angry — that is easy, but to be angry with the right person and to the right degree and at the right time and for the right purpose, and in the right way — that is not within everybody`s power and is not easy. - Aristotle',
             'A friend to all is a friend to none. - Aristotle',
-            'Wishing to be friends is quick work, but friendship is a slow ripening fruit. - Aristotle',
+            'Wishing to be friends is quick work, but friendship is a slow-ripening fruit. - Aristotle',
             'Happiness is the meaning and the purpose of life, the whole aim and end of human existence. - Aristotle',
             'Those who educate children well are more to be honored than they who produce them; for these only gave them life, those the art of living well. - Aristotle',
             'Patience is bitter, but its fruit is sweet.AristotleThose who know, do. Those that understand, teach. - Aristotle',
@@ -233,13 +250,13 @@
             'It is not enough to win a war; it is more important to organize the peace. - Aristotle',
             'The antidote for fifty enemies is one friend. - Aristotle',
             'The high-minded man must care more for the truth than for what people think. To write well, express yourself like the common people, but think like a wise man. - Aristotle',
-            'One swallow does not make a summer, neither does one fine day; similarly one day or brief time of happiness does not make a person entirely happy.Aristotle Man is by nature a social animal; an individual who is unsocial naturally and not accidentally is either beneath our notice or more than human. Society is something that precedes the individual. Anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god. - Aristotle',
+            'One swallow does not make a summer, neither does one fine day; similarly one day or brief time of happiness does not make a person entirely happy’.Aristotle Man is by nature a social animal; an individual who is unsocial naturally and not accidentally is either beneath our notice or more than human. Society is something that precedes the individual. Anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god. - Aristotle',
             'Act harder. Live harder. - Andrew Tate',
             'You get songs stuck in your head. I get ideas stuck in my head. - Andrew Tate',
             'Actions prove who someone is. Words just prove who they pretend to be. - Tristan Tate',
             'As a man you must earn your friends. The harder you work, the more important you become. The more important you are, the more important your friends will be. - Andrew Tate',
             'When you are winning, you work harder. Do more, get creative, be excellent. Apply this mindset to everything. - Andrew Tate',
-            'You aren`t doing better than anyone if you don`t feel like you`re doing better. The lambo`s only fun to drive because nobody else on the street has one. - Andrew Tate',
+            'You aren`t doing better than anyone if you don`t feel like you`re doing better. The Lambo`s only fun to drive because nobody else on the street has one. - Andrew Tate',
             'Be kind, for everyone you meet is fighting a harder battle. - Plato',        
             'Every heart sings a song, incomplete, until another heart whispers back. Those who wish to sing always find a song. At the touch of a lover, everyone becomes a poet. - Plato',
             'We can easily forgive a child that is afraid of the dark. The real tragedy of life is when men are afraid of the light. - Plato',
@@ -257,7 +274,7 @@
             'Courage is knowing what not to fear. - Plato',
             'There are three classes of men. Lovers of wisdom, lovers of honor and lovers of gain. - Plato',
             'Death is not the worst that can happen to men. - Plato',
-            'Good actions give strenght to ourselves and inspire good actions in others. - Plato',
+            'Good actions give strength to ourselves and inspire good actions in others. - Plato',
             'The first and best victory is to conquer self. - Plato',
             'True friendship can exist only between equals. - Plato',
             'No one is more hated than he who speaks the truth. - Plato',
@@ -267,18 +284,18 @@
             'True wisdom comes to each of us when we realize how little we know about life, ourselves, and the world around us. - Socrates',
             'From the deepest desires often come the deadliest hate. - Socrates',
             'One should never do wrong in return, nor mistreat any man, no matter how one has been mistreated by him. - Socrates',
-            'The easiest and noblest way is not be crushing others, but to be improving yourselves. - Socrates',
+            'The easiest and noblest way is not to be crushing others, but to be improving yourselves. - Socrates',
             'He is richest who is content with the least, for content is the wealth of nature. - Socrates',
             'Those who are the hardest to love need it the most. - Socrates',
-            'I only know that i know nothing. - Socrates',
-            'The greatest blessing granted to mankind come by way of madness, which is a divine gift. - Socrates',
+            'I only know that I know nothing. - Socrates',
+            'The greatest blessing granted to mankind comes by way of madness, which is a divine gift. - Socrates',
             'If all our misfortunes were laid in one common heap whence everyone must take an equal portion, most people would be content to take their own and depart. - Socrates',
             'The really important thing is not to live, but to live well. And to live well meant, along with more enjoyable things in life, to live according to your principles. - Socrates',
             'My friend...care for your psyche...know thyself, for once we know ourselves, we may learn how to care for ourselves. - Socrates',
             'The greatest way to live with honour in this world is to be what we pretend to be. - Socrates',
             'Be as you wish to seem. - Socrates',
             'Understanding a question is half an answer. - Socrates',
-            'The whole is greater than the sum of it`s parts. - Aristotle',
+            'The whole is greater than the sum of its parts. - Aristotle',
             'For the things we have to learn before we can do them, we learn by doing them. - Aristotle',
             'The more you know, the more you know you don`t know. - Aristotle',
             'It is not always the same thing to be a good man and a good citizen. - Aristotle',
@@ -292,7 +309,7 @@
             'Dignity does not consist in possessing honors, but in the consciousness that we deserve them. - Aristotle',
             'Nature does nothing uselessly. - Aristotle',
             'All paid jobs absorb and degrade the mind. - Aristotle',
-            'Wise men speak when they have something to say, fools speak because the have to say somrthing. - Aristotle',
+            'Wise men speak when they have something to say, fools speak because they have to say something. - Aristotle',
             'When your talents and the needs of the world cross, there lies your vocation. - Aristotle',
             'Misfortune shows those who are not really friends. - Aristotle',
             'Learning is an ornament of prosperity, a refuge in adversity, and a provision in old age. - Aristotle',
@@ -310,56 +327,56 @@
             'I have gained this by philosophy. I do without being ordered what some are constrained to do by their fear of the law. - Aristotle',
             'Without music, life would be a mistake. - Friedrich Nietzsche',
             'That which does not kill us makes us stronger. - Friedrich Nietzsche',
-            'I`m not upset that you lied to me, i`m upset that from now on i can`t believe you. - Friedrich Nietzsche',
+            'I`m not upset that you lied to me, I`m upset that from now on I can`t believe you. - Friedrich Nietzsche',
             'And those who were seen dancing were thought to be insane by those who could not hear the music. - Friedrich Nietzsche',
             'It is hard enough to remember my opinions, without also remembering my reasons for them. - Friedrich Nietzsche',
             'Whoever fights monsters should see to it that in the process he does not become a monster. And if you gaze long enough into an abyss, the abyss will gaze back into you. - Friedrich Nietzsche',
             'You must have chaos within you to give birth to a dancing star. - Friedrich Nietzsche',
             'You have your way, I have my way. As for the right way, the correct way, and the only way, it does not exist. - Friedrich Nietzsche',
             'Sometimes people don`t want to hear the truth because they don`t want their illusions destroyed. - Friedrich Nietzsche',
-            'He who has a why to live for for can bear almost any how. - Friedrich Nietzsche',
-            'In heaven, all the interestimg people are missing. - Friedrich Nietzsche',
-            'There are nofacts, only interpretations. - Friedrich Nietzsche',
+            'He who has a why to live for can bear almost any how. - Friedrich Nietzsche',
+            'In heaven, all the interesting people are missing. - Friedrich Nietzsche',
+            'There are no facts, only interpretations. - Friedrich Nietzsche',
             'The man of knowledge must be able not only to love his enemies but to hate his friends. - Friedrich Nietzsche',
-            'The individual has always had to struggle to keep from being overwhelmed by the tribe. If you try it, you will be lonely often, and sometimes frightened. But no price is too high to pay for the privilege of owining yourself. - Friedrich Nietzsche',
+            'The individual has always had to struggle to keep from being overwhelmed by the tribe. If you try it, you will be lonely often, and sometimes frightened. But no price is too high to pay for the privilege of owning yourself. - Friedrich Nietzsche',
             'When we are tired, we are attacked by ideas we conquered long ago. - Friedrich Nietzsche',
             'We should consider every day lost on which we have not danced at least once. - Friedrich Nietzsche',
             'I cannot believe in a god who wants to be praised all the time. - Friedrich Nietzsche',
-            'The snake which cannot cast his skin has to die. As well the minds which are prevented from changing their opinions, they cease to be mind. - Friedrich Nietzsche',
+            'The snake which cannot cast his skin has to die. As well the minds which are prevented from changing their opinions, they cease to be minds. - Friedrich Nietzsche',
             'In individuals, insanity is rare, but in groups, parties, nations and epochs, it is the rule. - Friedrich Nietzsche',
             'No one can construct for you the bridge upon which precisely you must cross the stream of life, no one nut yourself alone. - Friedrich Nietzsche',
-            'Is man merely a mistake of God`s? Or God merely a mistake of man?. - Friedrich Nietzsche',
+            'Is man merely a mistake of God`s? Or is God merely a mistake of man? - Friedrich Nietzsche',
             'The surest way to corrupt a youth is to instruct him to hold in higher esteem those who think alike than those who think differently. - Friedrich Nietzsche',
-            'The advantage of a bad memory is that one enjoys several times the same good things for the forst time. - Friedrich Nietzsche',
+            'The advantage of a bad memory is that one enjoys several times the same good things for the first time. - Friedrich Nietzsche',
             'Man is the cruelest animal. - Friedrich Nietzsche',
-            'I am a forest, and a night of dark trees : but he who is not afraid of my darkness, will find banks full of roses under my cypresses. - Friedrich Nietzsche',
-            'The thought of suicide is a great consolation : by means of it one gets through many a dark night. - Friedrich Nietzsche',
-            'Every deep thinker is more afraid of being understood than of being misuderstood. - Friedrich Nietzsche',
-            'Thoughts are the shadows of ur feelings -- always darker, emptier and simpler. - Friedrich Nietzsche',
-            'The higher we soar the smaller we appear to those who cannot fly. - .Friedrich Nietzsche',
-            'Faith : not wanting to know what the truth is. - Friedrich Nietzsche',
-            'A thinker sees his own actions as experiments and questions as attepmts to find out something. Success and failure are for him answers above all. - Friedrich Nietzsche',
-            'What if some day or night a demon were to steal after your loneliness and say to you ``This life as you now live it and have lived it, you will have to live once more``... Would you not throw yourself down and gnash your teeth and curse the demon who spoke thus? Or have you once experienced a tremendous moment when you would have answered him ``You are a god and never have I heard anything more divine``. - Friedrich Nietzsche',
+            'I am a forest, and a night of dark trees: but he who is not afraid of my darkness, will find banks full of roses under my cypresses. - Friedrich Nietzsche',
+            'The thought of suicide is a great consolation: by means of it one gets through many a dark night. - Friedrich Nietzsche',
+            'Every deep thinker is more afraid of being understood than of being misunderstood. - Friedrich Nietzsche',
+            'Thoughts are the shadows of our feelings -- always darker, emptier and simpler. - Friedrich Nietzsche',
+            'The higher we soar the smaller we appear to those who cannot fly. - Friedrich Nietzsche',
+            'Faith: not wanting to know what the truth is. - Friedrich Nietzsche',
+            'A thinker sees his own actions as experiments and questions as attempts to find out something. Success and failure are for him answers above all. - Friedrich Nietzsche',
+            'What if some day or night a demon were to steal after your loneliness and say to you “This life as you now live it and have lived it, you will have to live once more”... Would you not throw yourself down and gnash your teeth and curse the demon who spoke this? Or have you once experienced a tremendous moment when you would have answered him “You are a god and never have I heard anything more divine”. - Friedrich Nietzsche',
             'I would believe only in a God that knows how to dance. - Friedrich Nietzsche',
             'A casual stroll through the lunatic asylum shows that faith does not prove anything. - Friedrich Nietzsche',
-            'The true man wants two things : danger and play. For that reason he wants woman, as the most dangerous plaything. - Friedrich Nietzsche',
+            'The true man wants two things: danger and play. For that reason he wants woman, as the most dangerous plaything. - Friedrich Nietzsche',
             'There are no beautiful surfaces without a terrible depth. - Friedrich Nietzsche',
             'We have art in order not to die of the truth. - Friedrich Nietzsche',
-            'You must be ready to burn yourself in your own flame, how could you rise anew if you have not first become ashes?. - Friedrich Nietzsche',
+            'You must be ready to burn yourself in your own flame, how could you rise anew if you have not first become ashes? - Friedrich Nietzsche',
             'All truly great thoughts are conceived while walking. - Friedrich Nietzsche',
             'Be careful. lest in casting out your demon you exorcise the best thing in you. - Friedrich Nietzsche',
             'There are two types of people in this world, those who want to know and those who want to believe. - Friedrich Nietzsche',
-            'All things are subject to interpretation. Whichever interpretation prevails at given time is a function of power and not truth. - Friedrich Nietzsche',
+            'All things are subject to interpretation. Whichever interpretation prevails at a given time is a function of power and not truth. - Friedrich Nietzsche',
             'One ought to hold on to one`s heart, for if one lets it go, one soon loses control of the head too. - Friedrich Nietzsche',
             'A good writer possesses not only his own spirit but also the spirit of his friends. - Friedrich Nietzsche',
             'Silence is worse, all truths that are kept silent become poisonous. - Friedrich Nietzsche',
-            'In truth, there was only one christian and he died on the cross. - Friedrich Nietsche',
-            'All i need is a sheet of paper and something to write with, then i can turn the world upside down. - Friedrich Nietzsche',
-            'Doubt as sin -- Christianity has done it utmost to close the circle and declared even doubt to be sin. One is supposed to be cast into belief without reason, by a miracle,  and from then on to swim in it as the brightest and least ambiguous of elements : even a glance towards land, even the thought that one perhaps exists for something else as well as swimming, even the slightest impulse of our amphibious nature -- is sin! And notice that all this means that the foundatio of belief and all reflection on its origin is likewise excluded sinful. What is wanted are blindness and intoxication and an eternal song over the waves in which reason has drowned. - Friedrich Nietzsche',
-            'God is dead. God remains dead. And we have killed him. How shall we comfort ourselves, the murderers of all merderers? What was holiest and mightiest of all the  world has yet owned has bled to death under our knives : who will wipe this blood off us? What water is there for us to clean ourselves? What festivals of atonement, what sacred games shall we have to invent? Is not the greatness if this deed too great for us? Must we ourselves not become gods simply to appear worthy of it?. - Friedrich Nietzsche',
+            'In truth, there was only one Christian and he died on the cross. - Friedrich Nietsche',
+            'All I need is a sheet of paper and something to write with, then I can turn the world upside down. - Friedrich Nietzsche',
+            'Doubt as sin -- Christianity has done its utmost to close the circle and declared even doubt to be sin. One is supposed to be cast into belief without reason, by a miracle,  and from then on to swim in it as the brightest and least ambiguous of elements: even a glance towards land, even the thought that one perhaps exists for something else as well as swimming, even the slightest impulse of our amphibious nature -- is sin! And notice that all this means that the foundation of belief and all reflection on its origin is likewise excluded as sinful. What is wanted are blindness and intoxication and an eternal song over the waves in which reason has drowned. - Friedrich Nietzsche',
+            'God is dead. God remains dead. And we have killed him. How shall we comfort ourselves, the murderers of all murderers? What was holiest and mightiest of all the world has yet owned has bled to death under our knives: who will wipe this blood off us? What water is there for us to clean ourselves? What festivals of atonement, what sacred games shall we have to invent? Is not the greatness of this deed too great for us? Must we ourselves not become gods simply to appear worthy of it? - Friedrich Nietzsche',
             'The lonely one offers his hand too quickly to whomever he encounters. - Friedrich Nietzsche',
             'Ah, women. They make the highs higher and the lows more frequent. - Friedrich Nitzsche',
-            'Meaning and morality of One`s life comes from within oneself. Healthy, strong individuals seek self expansion by experimenting and by living dangerously. Life consists of an infinite number of possibilities and the healthy person explores as many of them as possible. Religions that teach pity, self-contempt, humility, self-restraint and guilt are incorrect. The good life is ever changing, devoid of regret, intense, creative and risky. - Friedrich Nietzsche',
+            'Meaning and morality of One`s life come from within oneself. Healthy, strong individuals seek self-expansion by experimenting and by living dangerously. Life consists of an infinite number of possibilities and the healthy person explores as many of them as possible. Religions that teach pity, self-contempt, humility, self-restraint and guilt are incorrect. The good life is ever-changing, devoid of regret, intense, creative and risky. - Friedrich Nietzsche',
             'Invisible threads are the strongest ties. - Friedrich Nietzsche',
             'Blessed are the forgetful, for they get the better even of their blunders. - Friedrich Nietzsche',
             'Art is the proper task of life. - Friedrich Nietzsche',
@@ -367,25 +384,25 @@
             'There is not enough love and goodness in the world to permit giving any of it away to imaginary beings. - Friedrich Nietzsche',
             'Ultimately, it is the desire, not the desired, that we love. - Friedrich Nietzsche',
             'Today as always men fall into two groups: slaves and free men. Whoever does not have two-thirds of his day for himself, is a slave, whatever he may be: a statesman, a businessman, an official, or a scholar. - Friedrich Nietzsche',
-            'Perhaps i know best why it is man alone who laughs, he alone suffers too deeply that he had to invent laughter. - Friedrich Nietzsche',
+            'Perhaps I know best why it is man alone who laughs, he alone suffers too deeply that he had to invent laughter. - Friedrich Nietzsche',
             'They muddy the water, to make it seem deep. - Friedrich Nietzsche',
             'To live is to suffer. to survive is to find some meaning to the suffering. - Friedrich Nietzsche',
-            'One repays a teacher badly if one always reamains nothing but a pupil. - Friedrich Nietzsche',
+            'One repays a teacher badly if one always remains nothing but a pupil. - Friedrich Nietzsche',
             'Stupidity in a woman is unfeminine. - Friedrich Nietzsche',
             'A thought, even a possibility, can shatter and transform us. - Friedrich Nietzsche',
             'There is more wisdom in your body than in your deepest philosophy. - Friedrich Nietzsche',
-            'After coming into contact with a religious man I always feel i must wash my hands. - Friedrich Nietzsche',
+            'After coming into contact with a religious man I always feel I must wash my hands. - Friedrich Nietzsche',
             'Hope, in reality, is the worst of all evils because it prolongs the torments of man. - Friedrich Nietzsche',
             'The visionary lies to himself, the liar only to others. - Friedrich Nietzsche',
-            'Is it better to out-monster the monster or to be quickly devoured. - Friedrich Nietzsche',
-            'But the worst enemy you can meet will always be yourself, you lie in wait for yourself in caverns and forests. Lonely one, you are going the way to yourself! And your way goes past yourself, and past your seven devils! You will be a heretic to yourself and witch and soothsayer and fool and doubter and unholy one and villain. You must be ready to burn yourself in your own flame : how could you become new, if you had not first become ashes?. - Friedrich Nietzsche',
+            'Is it better to out-monster the monster or to be quickly devoured? - Friedrich Nietzsche',
+            'But the worst enemy you can meet will always be yourself, you lie in wait for yourself in caverns and forests. Lonely one, you are going the way to yourself! And your way goes past yourself, and past your seven devils! You will be a heretic to yourself and witch and soothsayer and fool and doubter and unholy one and villain. You must be ready to burn yourself in your own flame: how could you become new, if you had not first become ashes? - Friedrich Nietzsche',
             'I know of no better life purpose than to perish in attempting the great and the impossible. - Friedrich Nietzsche',
-            'He who would learn to fly one day must first learn to walk and run and climb and danec, one cannot fly into flying. - Friedrich Nietzsche',
+            'He who would learn to fly one day must first learn to walk and run and climb and dance, one cannot fly into flying. - Friedrich Nietzsche',
             'To predict the behaviour of ordinary people in advance, you only have to assume that they will always try to escape a disagreeable situation with the smallest possible expenditure of intelligence. - Friedrich Nietzsche',
             'The most perfidious way of harming a cause consists of defending it with faulty arguments. - Friedrich Nietzsche',
-            'One must shed the bad taste of wanting to agree with many. ``Good`` is no longer good when one`s neighbor mouths it. And how should there be a ``common good``! The term contradicts itself : whatever can be common always has little value. In the end it must be as it always has been : great things remain for the great, abysses for the profound , nuances and shudders for the refined, and, in brief, all that is rare for the rare. - Friedrich Nietzsche',
+            'One must shed the bad taste of wanting to agree with many. ``Good`` is no longer good when one`s neighbor mouths it. And how should there be a ``common good``! The term contradicts itself: whatever can be common always has little value. In the end it must be as it always has been: great things remain for the great, abysses for the profound, nuances and shudders for the refined, and, in brief, all that is rare for the rare. - Friedrich Nietzsche',
             'And once you are awake, you shall remain awake eternally. - Friedrich Nietzsche',
-            'Is life not a thousand times too short for us to bore ourselves. - Friedrich Nietzsche',
+            'Is life not a thousand times too short for us to bore ourselves? - Friedrich Nietzsche',
             'Everything the State says is a lie, and everything it has it has stolen. - Friedrich Nietzsche',
             'Talking much about oneself can also be a means to conceal oneself. - Friedrich Nietzsche',
             'The voice of beauty speaks softly, it creeps only into the most fully awakened souls. - Friedrich Nietzsche',
@@ -399,7 +416,7 @@
             'Age is an issue of mind over matter. If you don`t mind, it doesn`t matter. - Mark Twain',
             'Whenever you find yourself on the side of the majority, it is time to pause and reflect. - Mark Twain',
             'Anger is an acid that can do more harm to the vessel in which it is stored than to anything on which it is poured. - Mark Twain',
-            'Suppose you were an idiot, and suppose you were a member of Congress? but i repeat myself. - Mark Twain',
+            'Suppose you were an idiot, and suppose you were a member of Congress? but I repeat myself. - Mark Twain',
             'A man who carries a cat by the tail learns something he can learn in no other way. - Mark Twain',
             'Courage is resistance to fear. mastery or fear, not absence of fear. - Mark Twain',
             'Get your facts first, then you can distort them as you please. - Mark Twain',
@@ -411,7 +428,7 @@
             'Part of the secret of a success in life is to eat what you like and let the food fight it out inside. - Mark Twain',
             'Never put off till tomorrow what you can do the day after tomorrow. - Mark Twain',
             'In the first place, God made idiots. That was for practice. Then he made school boards. - Mark Twain',
-            'It ain`t those parts of the Bible that i can`t understand that bother me, it is the parts that I do understand. - Mark Twain',
+            'It ain`t those parts of the Bible that I can`t understand that bother me, it is the parts that I do understand. - Mark Twain',
             'There are lies, damned lies and statistics. - Mark Twain',
             'The best way to cheer yourself up is to try to cheer somebody else up. - Mark Twain',
             'Humor is mankind`s greatest blessing, - Mark Twain',
@@ -433,20 +450,20 @@
             'Don`t let schooling interfere with your education. - Mark Twain',
             'The only way to keep your health is to eat what you don`t want, drink what you don`t like, and do what you`d rather not. - Mark Twain',
             'Truth is stranger than fiction, but it is because fiction is obliged to stick to possibilities, truth isn`t. - Mark Twain',
-            'When you fish for love,bait your heart, not your brain. - Mark Twain',
-            'My mother had a great deal of trouble with me, but i think she enjoyed it. - Mark Twain',
-            'Civilisation is the limitless multipplication of unnecessary necessities. - Mark Twain',
-            'I didn`t attend the funeral, but i send a nice letter saying i approved of it. - Mark Twain',
+            'When you fish for love, bait your heart, not your brain. - Mark Twain',
+            'My mother had a great deal of trouble with me, but I think she enjoyed it. - Mark Twain',
+            'Civilisation is the limitless multiplication of unnecessary necessities. - Mark Twain',
+            'I didn`t attend the funeral, but I send a nice letter saying I approved of it. - Mark Twain',
             'I don`t give a damn for a man that can only spell a word one way. - Mark Twain',
             'Loyalty to petrified opinion never yet broke a chain or freed a human soul. - Mark Twain',
             'All generalizations are false, including this one. - Mark Twain',
             'The reports of my death have been greatly exaggerated. - Mark Twain',
             'Wrinkles should merely indicate where smiles have been. - Mark Twain',
             'There is no distinctly American criminal class - except Congress.- Mark Twain',
-            'The human race has one really efective weapon, and that is laughter. - Mark Twain',
+            'The human race has one really effective weapon, and that is laughter. - Mark Twain',
             'Let us endeavor so to live so that when we come to die even the undertaker will be sorry. - Mark Twain',
             'Don`t go around saying the world owes you a living. The world owes you nothing. It was here first. - Mark Twain',
-            'Giving up smoking is the easist thing in the world.I know because i`ve done it thousands of times. - Mark Twain',
+            'Giving up smoking is the easiest thing in the world. I know because I`ve done it thousands of times. - Mark Twain',
             'Thunder is good, thunder is impressive, but it is lightning that does the work. - Mark Twain',
             'It usually takes me more than three weeks to prepare a good impromptu speech. - Mark Twain',
             'Clothes make the man. Naked people have little or no influence on society. - Mark Twain',
@@ -460,10 +477,10 @@
             'First say to yourself what you would be and then do what you have to do. - Epictetus',
             'It is not what happens to you, but how you react to it that matters. - Epictetus',
             'People are not disturbed by things, but by the view they take of them. - Epictetus',
-            'Nothing great is created suddenly, any more than a bunch of grapes or afig. If you tell me that you desire a fig. I answer you that there must be time. Let it blossom, then bear fruit, then ripen. - Epictetus',
+            'Nothing great is created suddenly, any more than a bunch of grapes or a fig. If you tell me that you desire a fig. I answer you that there must be time. Let it blossom, then bear fruit, then ripen. - Epictetus',
             'Men are not disturbed by things, but by the view which they take on them. - Epictetus',
             'Only the educated are free. - Epictetus',
-            'Imagine for yourself a character, a model personality, whose exaple you determine to follow, in private as well as in public. - Epictetus',
+            'Imagine for yourself a character, a model personality, whose example you determine to follow, in private as well as in public. - Epictetus',
             'It is impossible to begin to learn that which one thinks one already knows. - Epictetus',
             'Wealth consists not in having great possessions, but in having few wants. - Epictetus',
             'The greater the difficulty the more glory in surmounting it. Skillful pilots gain their reputation from storms and tempests. - Epictetus',
@@ -471,10 +488,10 @@
             'Keep silence for the most part, and speak only when you must, and then briefly. - Epictetus',
             'Know, first, who you are, and then adorn yourself accordingly. - Epictetus',
             'No great thing is created suddenly. - Epictetus',
-            'Never in any case say i have lost such a thing, but i have returned it. Is your child dead? It is a return. Is your wife dead? It is a return. Are you deprived of your estate? Is not this also a return?. - Epictetus',
+            'Never in any case say I have lost such a thing, but I have returned it. Is your child dead? It is a return. Is your wife dead? It is a return. Are you deprived of your estate? Is not this also a return? - Epictetus',
             'If you decide to be good, begin by believing that you are wicked. - Epictetus',
             'Is freedom anything else than the right to live as we wish? Nothing else. - Epictetus',
-            'The essence of philosophy is that a man should so live that his happiness shall depend as little as posible on external things. - Epictetus',
+            'The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things. - Epictetus',
             'You are a little soul carrying a corpse. - Epictetus',
             'He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has. - Epictetus',
             'First learn the meaning of what you say, then speak. - Epictetus',
@@ -482,14 +499,14 @@
             'All religions must be tolerated...for every man must get to heaven in his own way. - Epictetus',
             'Be careful to leave your sons well instructed rather than rich, for the hopes of the instructed are better than the wealth of the ignorant. - Epictetus',
             'If you wish to be a writer, write. - Epictetus',
-            'It takes more than just a good looking body. You`ve got to have the heart and soul to go with it. - Epictetus',
+            'It takes more than just a good-looking body. You`ve got to have the heart and soul to go with it. - Epictetus',
             'Silence is safer than speech. - Epictetus',
             'if evil be spoken of you and it be true, correct yourself, if it be a lie, laugh at it. - Epictetus',
-            'If one oversteps the bounds of modernation, the greatest pleasures cease to please. - Epictetus',
+            'If one oversteps the bounds of moderation, the greatest pleasures cease to please. - Epictetus',
             'Control thy passions lest they take vengeance on thee. - Epictetus',
             'It is not death or pain that is to be dreaded, but the fear of pain or death. - Epictetus',
             'Practice yourself, for heaven`s sake in little things, and then proceed to greater. - Epictetus',
-            'If you see truth you will not seek victory by dishonorable means, and if you find the truth you will become invincible. - Epictetus',
+            'If you seek truth you will not seek victory by dishonorable means, and if you find the truth you will become invincible. - Epictetus',
             'Do not seek to bring things to pass in accordance with your wishes, but wish for them as they are, and you will find them. - Epictetus',
             'Make the best use of what is in your power, and take the rest as it happens. - Epictetud',
             'Difficulties are things that show a person what they are. - Epictetus',
@@ -497,24 +514,24 @@
             'Whoever does not regard what he has as most ample wealth, is unhappy, though he be master of the world. - Epictetus',
             'It is not he who reviles or strikes you who insults you, but your opinion that these things are insulting. - Epictetus',
             'We tell lies, yet it is easy to show that lying is immoral. - Epictetus',
-            'One h=that desires to excel should endeavor in those things that are in themselves most excellent. - Epictetus',
+            'One that desires to excel should endeavor in those things that are in themselves most excellent. - Epictetus',
             'There is nothing good or evil save in the will. - Epictetus',
             'The two powers which in my opinion constitute a wise man are those of bearing and forbearing. - Epictetus',
-            'Not every difficult and dangerous thing is suitable for training, but only that which is conducive to seccess in achieving the object of our effort. - Epictetus',
+            'Not every difficult and dangerous thing is suitable for training, but only that which is conducive to success in achieving the object of our effort. - Epictetus',
             'Whenever you are angry, be assured that it is not only a present evil, but that you have increased a habit. - Epictetus',
             'Do not laugh much or often or unrestrainedly. - Epictetus',
-            'All philosophy lies in tow words, sustain and abstain. - Epictetus',
-            'If virtue promises happines, prosperity and peace, then progress in virtue is progress in each of these for to whatever point the perfection of anything brings us, progress is always an approach toward it. - Epictetus',
+            'All philosophy lies in two words, sustain and abstain. - Epictetus',
+            'If virtue promises happiness, prosperity and peace, then progress in virtue is progress in each of these for to whatever point the perfection of anything brings us, progress is always an approach toward it. - Epictetus',
             'We should not moor a ship with one anchor, or our life with one hope. - Epictetus',
             'Freedom is the right to live as we wish. - Epictetus',
-            'Neither should a ship rely one one small anchor, nor should life rest on a single hope. - Epictetus',
-            'A particularly beautiful woman is a source of terror. As a rule, a beautiful woman is a terrible disapointment. - Carl Jung',
+            'Neither should a ship rely on one small anchor, nor should life rest on a single hope. - Epictetus',
+            'A particularly beautiful woman is a source of terror. As a rule, a beautiful woman is a terrible disappointment. - Carl Jung',
             'Who looks outside, dreams, who looks inside, awakes. - Carl Jung',
             'Knowing your own darkness is the best method for dealing with the darknesses of other people. - Carl Jung',
-            'Even a happy life cannot be without a measure of darkness, and the word happy would lose it`s meaning if it were not balanced by sadness. It is far better take things as they come along with patience and equanimity. - Carl Jung',
+            'Even a happy life cannot be without a measure of darkness, and the word happy would lose its meaning if it were not balanced by sadness. It is far better to take things as they come along with patience and equanimity. - Carl Jung',
             'One looks back with appreciation to the brilliant teachers, but with gratitude to those who touched our human feelings. - Carl Jung',                                                                                              
             'The healthy man does not torture others - generally it is the tortured who turn into torturers. - Carl Jung',
-            'As far as we can discern, the scole purpose of human existence is to kindle a light in the darkness of mere being. - Carl Jung',
+            'As far as we can discern, the sole purpose of human existence is to kindle a light in the darkness of mere being. - Carl Jung',
             'Everything that irritates us about others can lead us to an understanding of ourselves. - Carl Jung',
             'We cannot change anything until we accept it. Condemnation does not liberate, it oppresses. - Carl Jung',
             'Every form of addiction is bad, no matter whether the narcotic be alcohol or morphine or idealism. - Carl Jung',
@@ -530,22 +547,22 @@
             'The shoe that fits one person pinches another, there is no recipe for living that suits all cases. - Carl Jung',
             'Often the hands will solve a mystery that the intellect has struggled with in vain. - Carl Jung',
             'There is no such thing as a pure introvert or extrovert. Such a person would be in the lunatic asylum. - Carl Jung',
-            'Show me a sane man and i will cure him for you. - Carl Jung',
+            'Show me a sane man and I will cure him for you. - Carl Jung',
             'Children are educated by what the grown-up is and not by his talk. - Carl Jung',
             'I have treated many hundreds of patients. Among those in the second half of life - that is to say, over 35 - there has not been one whose problem in the last resort was not that of finding a religious outlook on life. - Carl Jung',
             'The greatest and most important problems of life are all fundamentally insoluble. They can never be solved but only outgrown. - Carl Jung',
-            'The word `happy` would lose it`s meaning if it were not balanced by sadness. - Carl Jung',
+            'The word `happy` would lose its meaning if it were not balanced by sadness. - Carl Jung',
             'The pendulum of the mind alternates between sense and nonsense, not between right and wrong. - Carl Jung',
             'We are born at a given moment, in a given place and, like vintage years of wine, we have the qualities of the year and the season of which are born. Astrology does not lay claim to anything more. - Carl Jung',
-            'A man who has not passes through the inferno of his passions has never overcome them. - Carl Jung',
+            'A man who has not passed through the inferno of his passions has never overcome them. - Carl Jung',
             'Man needs difficulties, they are necessary for health. - Carl Jung',
-            'Who has fully realized that history is not contained in thick books but lives in our very blood. - Carl Jung',
-            'Dreams are the guiding words of the soul. Why should I henceforth not love my freams and not make their riddling images into objects of my daily consideration?. - Carl Jung',
+            'Who has fully realized that history is not contained in thick books but lives in our very blood? - Carl Jung',
+            'Dreams are the guiding words of the soul. Why should I henceforth not love my dreams and not make their riddling images into objects of my daily consideration? - Carl Jung',
             'We should not pretend to understand the world only by the intellect. The judgment of the intellect is only part of the truth. - Carl Jung',
             'Man`s task is to become conscious of the contents that press upward from the unconscious. - Carl Jung',
             'Neurosis is always a substitute for legitimate suffering. - Carl Jung',
-            'For a young person, it is almost a sin, or at least a danger, to be too preoccupied with himself, but for the ageing, it is a duty and a necessity to devote serious attention to himself. - Carl Jung',
-            'All the works of man have their origin in creative fantasy. What right have we then to depreciate imagination. - Carl Jung',
+            'For a young person, it is almost a sin, or at least a danger, to be too preoccupied with himself, but for the aging, it is a duty and a necessity to devote serious attention to himself. - Carl Jung',
+            'All the works of man have their origin in creative fantasy. What right have we then to depreciate imagination? - Carl Jung',
             'If there is anything that we wish to change in the child, we should first examine it and see whether it is not something that could better be changed in ourselves. - Carl Jung',
             'There is no birth of consciousness without pain. - Carl Jung',
             'If one does not understand a person, one tends to regard him as a fool. - Carl Jung',
@@ -553,33 +570,33 @@
             'Nobody, as long as he moves about among the chaotic currents of life, is without trouble. - Carl Jung',
             'The least of things with a meaning is worth more in life than the greatest of things without it. - Carl Jung',
             'We shall probably get nearest to the truth if we think of the conscious and personal psyche as resting upon the broad basis of an inherited and universal psychic disposition which is as such unconscious, and that our personal psyche bears the same relation to the collective psyche as the individual to society. - Carl Jung',
-            'A human being would certainly not frow to be seventy or eighty years old if this longevity had no meaning for the species. The afternoon of human life must also have a significance of it`s own and cannot be merely a pitiful appendance to life`s morning. - Carl Jung',
+            'A human being would certainly not grow to be seventy or eighty years old if this longevity had no meaning for the species. The afternoon of human life must also have a significance of its own and cannot be merely a pitiful appendance to life`s morning. - Carl Jung',
             'Mistakes are, after all, the foundation of truth, and if a man does not know what a thing is, it is at least an increase in knowledge if he knows what it is not. - Carl Jung',
             'The most intense conflicts, if overcome, leave behind a sense of security and calm that is not as easily disturbed. It is just these intense conflicts and their conflagration which are needed to produce valuable and lasting results. - Carl Jung',
-            'We deem those happy who from the experience of life have learnt to bear it`s ills without being overcome by them. - Carl Jung',
+            'We deem those happy who from the experience of life have learnt to bear its ills without being overcome by them. - Carl Jung',
             'Follow that will and that way which experience confirms to be your own. - Carl Jung',
             'Resistance to the organized mass can be effected only by the man who is as well organized in his individuality as the mass itself. - Carl Jung',
             'The debt we owe to the play of imagination is incalculable. - Carl Jung',
             'Masses are always breeding grounds of psychic epidemics. - Carl Jung',
-            'Shrinking away from death is something unhealthy and abnormal which robs the second half of life of it`s purpose. - Carl Jung',
-            'The world `belief` is a difficult thing for me. I don`t believe. I must have a reason for a certain hypothesis. Either I know a thing, and then i know it - I don`t need to belive it. - Carl Jung',
+            'Shrinking away from death is something unhealthy and abnormal which robs the second half of life of its purpose. - Carl Jung',
+            'The world `belief` is a difficult thing for me. I don`t believe. I must have a reason for a certain hypothesis. Either I know a thing, and then I know it - I don`t need to believe it. - Carl Jung',
             'Everyone knows nowadays that people `have complexes`. What is not so well known, though far more important theoretically, is that complexes can have us. - Carl Jung',
-            'The man who promises everything is sure to fullfil nothing, and everyone who promises too much is in danger of using evil means in order to carry out his promises, and is already on the road to perdition. - Carl Jung',
+            'The man who promises everything is sure to fulfill nothing, and everyone who promises too much is in danger of using evil means in order to carry out his promises, and is already on the road to perdition. - Carl Jung',
             'It is a fact that cannot be denied, the wickedness of others becomes our own wickedness because it kindles something evil in our own hearts. - Carl Jung',
-            'Without this playing with fantasy no creative work has ever yet come to birth. The debt we owe to the play of the imagination is incalculable. - Carl Jung',
+            'Without this playing with fantasy, no creative work has ever yet come to birth. The debt we owe to the play of the imagination is incalculable. - Carl Jung',
             'A `scream` is always just that - a noise and not music. - Carl Jung',
-            'Understanding does not cure evil, but it is a definite help. in as much as one can cope with a comprehesible darkness. - Carl Jung',
+            'Understanding does not cure evil, but it is a definite help. in as much as one can cope with a comprehensible darkness. - Carl Jung',
             'Man is not a machine that can be remodelled for quite other purposes as occasion demands, in the hope that it will go on functioning as regularly as before but is a quite different way. He carries his whole history with him, in his very structure is written the history of mankind. - Carl Jung',
             'The Christ - symbol is one of the greatest importance for psychology in so far as it is perhaps the most highly developed and differentiated symbol of the self, apart from the figure of the Buddha. - Carl Jung',
-            'A psychoneurosis must be understood, ultimately, as the suffering of a soul which has not discovered it`s meaning. - Carl Jung',
-            'In my case Pilgrim`s Progress consisted in my having to climb down a thousand ladders until i could reach out my hand to the little clod of earth that i am. - Carl Jung',
-            'In the child, consciousness rises out of the depths of unconscious psychic life, at first like seperate islands, which gradually unite to form a `continent`, a continuous landmass of consciousness. Progressive mental development means, in effect, extension of consciousness. - Carl Jung',
+            'A psychoneurosis must be understood, ultimately, as the suffering of a soul which has not discovered its meaning. - Carl Jung',
+            'In my case, Pilgrim`s Progress consisted in my having to climb down a thousand ladders until I could reach out my hand to the little clod of earth that I am. - Carl Jung',
+            'In the child, consciousness rises out of the depths of unconscious psychic life, at first like separate islands, which gradually unite to form a `continent`, a continuous landmass of consciousness. Progressive mental development means, in effect, extension of consciousness. - Carl Jung',
             'Great talents are the most lovely and often the most dangerous fruits on the tree of humanity. They hang upon the most slender twigs that are easily snapped off. - Carl Jung',
             'The wine of youth does not always clear with advancing years, sometimes it grows turbid. - Carl Jung',
             'Our heart glows, and secret unrest gnaws at the root of our being. Dealing with the unconscious has become a question of life for us. - Carl Jung',
             'Sometimes, indeed, there is such a discrepancy between the genius and his human qualities that one has to ask oneself whether a little less talent might not have been better. - Carl Jung',
-            'Just as we might take Darwin as an example of the normal extraverted thinking type, the normal introverted thinking type could be represented by Kant. The one speaks with facts, the other relies on the subjective factor. Darwin ranges over the wide field of objective reality, Kant restricts himself to a critique of knowledge. - Carl Jung',
-            'We are in a far better posotion to observe instincts in animals or in primitives than in ourselves. This is due to the fact that we have grown accustomed to scrutinizing our own actions and to seeking rational explanations for them. - Carl Jung',
+            'Just as we might take Darwin as an example of the normal extraverted thinking type, the normal introverted thinking type could be represented by Kant. The one speaks with facts, the other relies on the subjective factor. Darwin ranges over the wide field of objective reality, and Kant restricts himself to a critique of knowledge. - Carl Jung',
+            'We are in a far better position to observe instincts in animals or in primitives than in ourselves. This is due to the fact that we have grown accustomed to scrutinizing our own actions and to seeking rational explanations for them. - Carl Jung',
             'Grounded in the natural philosophy of the Middle Ages, alchemy formed a bridge, on the one hand into the past, to Gnosticism, and on the other into the future, to the modern psychology of the unconscious. - Carl Jung',
             'There is geometry in the humming of the strings, there is music in the spacing of spheres. - Pythagoras',
             'As soon as laws are necessary for men, they are no longer fit for freedom. - Pythagoras',
@@ -588,36 +605,36 @@
             'Rest satisfied with doing well, and leave others to talk of you as they will. - Pythagoras',
             'Do not say a little in many words but a great deal in a few. - Pythagoras',
             'Beans have a soul. - Pythagoras',
-            'It is better wither to be silent, or to say things of more value than silence. Sooner throw a pearl at hazard than an idle or useless word, and do not say a little in many words, but a great deal in a few. - Pythagoras',
+            'It is better either to be silent, or to say things of more value than silence. Sooner throw a pearl at hazard than an idle or useless word, and do not say a little in many words, but a great deal in a few. - Pythagoras',
             'Strength of mind rests in sobriety, for this keeps your reason unclouded by passion. - Pythagoras',
             'Silence is better than unmeaning words. - Pythagoras',
             'Concern should drive us into action and not into a depression. No man is free who cannot control himself. - Pythagoras',
-            'Friends are as companions on a journey, who ought to aid each other to perserve in the road to a happier life. - Pythagoras',
-            'Choose rather to be strong ofsoul than strong of body. - Pythagoras',
+            'Friends are as companions on a journey, who ought to aid each other to preserve on the road to a happier life. - Pythagoras',
+            'Choose rather to be strong of soul than strong of body. - Pythagoras',
             'Above all things, reverence yourself. - Pythagoras',
             'Do not talk little on many subjects, but much on a few. - Pythagoras',
             'Begin thus from the first act, and proceed, and, in conclusion, at the ill which thou hast done, be troubled, and rejoice for the good. - Pythagoras',
             'Virtue is harmony. - Pythagoras',
-            'As long as a man continues to be the ruthless destroyer of lower living beings he will never know halth or peace. For as long as men massacre animals, they will kill each other. - Pythagoras',
+            'As long as a man continues to be the ruthless destroyer of lower living beings he will never know health or peace. For as long as men massacre animals, they will kill each other. - Pythagoras',
             'The most momentous thing in human life is the art of winning the soul to good or evil. - Pythagoras',
             'No one is free who has not obtained the empire of himself. - Pythagoras',
             'There is nothing so easy but that it becomes difficult when you do it reluctantly. - Pythagoras',
             'There is a good principle which created order, light, and man, and an evil principle which created chaos, darkness and woman. - Pythagoras',
-            'Above the cloud with it`s shadow is the star with it`s light. Above all things reverence yourself. - Pythagoras',
+            'Above the cloud with its shadow is the star with its light. Above all things reverence yourself. - Pythagoras',
             'Reason is immortal, all else is mortal. - Pythagoras',
             'A thought is an idea in transit. - Pythagoras',
             'The happiness of your life depends upon the quality of your thoughts, therefore, guard accordingly, and take care that you entertain no notions unsuitable to virtue and reasonable nature. - Marcus Aurelius',
-            'It is not death that a man should fear, but he should fear never beggining to live. - Marcus Aurelius',
+            'It is not death that a man should fear, but he should fear never beginning to live. - Marcus Aurelius',
             'Accept the things to which fate binds you, and love the people with whom fate brings you together, but do so with all your heart. - Marcus Aurelius',
             'Reject your sense of injury and the injury itself disappears. - Marcus Aurelius',
             'Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present. - Marcus Aurelius',
             'Waste no more time arguing about what a good man should be. Be one. - Marcus Aurelius',
             'The best revenge is to be unlike him who performed the injury. - Marcus Aurelius',
-            'The soul becomes dyed with the color of it`s thoughts. - Marcus Aurelius',
+            'The soul becomes dyed with the color of its thoughts. - Marcus Aurelius',
             'A man`s worth is no greater than his ambitions. - Marcus Aurelius',
             'When you arise in the morning, think of what a precious privilege it is to be alive - to breathe, to think, to enjoy, to love. - Marcus Aurelius',
             'Very little is needed to make a happy life, it is all within yourself, in your way of thinking. - Marcus Aurelius',
-            'If it not right do not do it, if it is not true do not say it. - Marcus Aurelius',
+            'If it is not right do not do it, if it is not true do not say it. - Marcus Aurelius',
             'That which is not good for the bee-hive cannot be good for the bees. - Marcus Aurelius',
             'The universe is change, our life is what our thoughts make it. - Marcus Aurelius',
             'The universe is transformation, life is opinion. - Marcus Aurelius',
@@ -629,23 +646,23 @@
             'Our life is what our thoughts make it. - Marcus Aurelius',
             'Nothing happens to any man that he is not formed by nature to bear. - Marcus Aurelius',
             'Everything that happens, happens as it should, and if you observe carefully, you will find this to be so. - Marcus Aurelius',
-            'Time is a sort of river of passing events, and strong is it`s current, no sooner is a thing brought to sight than it is swept by and another takes it`s place, and this too will be swept away. - Marcus Aurelius',
-            'Begin - to begin is half the work, let jalf still remain, again begin this, and thou wilt have finnished. - Marcus Aurelius',
+            'Time is a sort of river of passing events, and strong is its current, no sooner is a thing brought to sight than it is swept by and another takes its place, and this too will be swept away. - Marcus Aurelius',
+            'Begin - to begin is half the work, let half still remain, again begin this, and thou wilt have finished. - Marcus Aurelius',
             'Observe constantly that all things take place by change, and accustom thyself to consider that the nature of the Universe loves nothing so much as to change the things which are, and to make new things like them. - Marcus Aurelius',
-            'Look back over the past, with it`s changing empires that rose and fell, and you can foresee the future too. - Marcus Aurelius',
+            'Look back over the past, with its changing empires that rose and fell, and you can foresee the future too. - Marcus Aurelius',
             'Nowhere can man find a quieter or more untroubled retreat than his own soul. - Marcus Aurelius',
-            'Because your own strength in unequal to the task, do not assume that it is beyond the pwoers of man, but if anything is within the powers and province of man, believe that it is within your own compass also. - Marcus Aurelius',
+            'Because your own strength is unequal to the task, do not assume that it is beyond the powers of man, but if anything is within the powers and province of man, believe that it is within your own compass also. - Marcus Aurelius',
             'Nothing has such power to broaden the mind as the ability to investigate systematically and truly all that comes under thy observation in life. - Marcus Aurelius',
-            'Each day provides it`s own gifts. - Marcus Aurelius',
+            'Each day provides its own gifts. - Marcus Aurelius',
             'How much more grievous are the consequences of anger than the causes of it. - Marcus Aurelius',
             'The only wealth which you will keep forever is the wealth you have given away. - Marcus Aurelius',
             'We ought to do good to others as simply as a horse runs, or a bee makes honey, or a vine bears grapes season without thinking of the grapes it has borne. - Marcus Aurelius',
-            'Life is neither good or evil, but only a place for good and evil. - Marcus Aurelius',
+            'Life is neither good nor evil, but only a place for good and evil. - Marcus Aurelius',
             'The art of living is more like wrestling than dancing. - Marcus Aurelius',
             'To the wise, life is a problem, to the fool, a solution. - Marcus Aurelius',
             'Adapt yourself to the things among which your lot has been cast and love sincerely the fellow creatures with whom destiny has ordained that you shall live. - Marcus Aurelius',
             'I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinions of himself than on the opinions of others. - Marcus Aurelius',
-            'Here is the rule to remember in the future, when anything tempts you to be bitter, not `This is a misfortune` but `To bear this worthily is a good fortune.` - Marcus Aurelius',
+            'Here is the rule to remember in the future, when anything tempts you to be bitter, not “This is a misfortune” but “To bear this worthily is a good fortune”. - Marcus Aurelius',
             'Natural ability without education has more often raised a man to glory and virtue than education without natural ability. - Marcus Aurelius',
             'Look within. Within is the fountain of good, and it will ever bubble up, if thou wilt ever dig. - Marcus Aurelius',
             'Anger cannot be dishonest. - Marcus Aurelius',
@@ -658,7 +675,7 @@
             'Confine yourself to the present. - Marcus Aurelius',
             'Let men see, let them know, a real man, who lives as he was meant to live. - Marcus Aurelius',
             'Because a thing seems difficult for you, do not think it impossible for anyone to accomplish. - Marcus Aurelius',
-            'Anything in any way beautiful derives it`s beauty from itself and asks nothing beyond itself. Praise is not part of it, for nothing is made worse or better by praise. - Marcus Aurelius',
+            'Anything in any way beautiful derives its beauty from itself and asks nothing beyond itself. Praise is not part of it, for nothing is made worse or better by praise. - Marcus Aurelius',
             'Where a man can live, he can also live well. - Marcus Aurelius',
             'Be content with what you are,  and wish not change, nor dread your last day, nor long for it. - Marcus Aurelius',
             'To refrain from imitation is the best revenge. - Marcus Aurelius',
@@ -682,7 +699,7 @@
             'Words may show a man`s wit but actions his meaning. - Benjamin Franklin',
             'In this world nothing can be said to be certain, except death and taxes. - Benjamin Franklin',
             'Half a truth is often a great lie. - Benjamin Franklin',
-            'A place for everything, everything in it`s place. - Benjamin Franklin',
+            'A place for everything, everything in its place. - Benjamin Franklin',
             'Experience keeps a dear school, but fools will learn in no other. - Benjamin Franklin',
             'Be at war with your vices, at peace with your neighbors, and let every new year find you a better man. - Benjamin Franklin',
             'There are three things extremely hard: steel, a diamond, and to know one`s self. - Benjamin Franklin',
@@ -697,7 +714,7 @@
             'He who falls in love with himself will have no rivals. - Benjamin Franklin',
             'As we enjoy great advantages from the inventions of others, we should be glad of an opportunity to serve others by any invention of ours, and this we should do freely and generously. - Benjamin Franklin',
             'Don`t throw stones at your neighbors if your own windows are glass. - Benjamin Franklin',
-            'It is the working man who is the happy man. It is the idle man who is the miserable man. - Beanjamin Franklin',
+            'It is the working man who is the happy man. It is the idle man who is the miserable man. - Benjamin Franklin',
             'Life`s tragedy is that we get old too soon and wise too late. - Benjamin Franklin',
             'When in doubt, don`t. - Benjamin Franklin',
             'He that is good for making excuses is seldom good for anything else. - Benjamin Franklin',
@@ -705,17 +722,17 @@
             'Time is money. - Benjamin Franklin',
             'I didn`t fail the test, I just found 100 ways to do it wrong. - Benjamin Franklin',
             'A false friend and a shadow attend only while the sun shines. - Benjamin Franklin',
-            'Be slow in choosing a friend, slower in changing. - Benjamin Freanklin',
+            'Be slow in choosing a friend, slower in changing. - Benjamin Franklin',
             'Honesty is the best policy. - Benjamin Franklin',
             'Don`t thou love life? Then do not squander time, for that is the stuff life is made of. - Benjamin Franklin',
-            'A house is nit a home unless it contains food and fire for the mind as well as the body. - Benjamin Franklin',
+            'A house is not a home unless it contains food and fire for the mind as well as the body. - Benjamin Franklin',
             'Wise men don`t need advice. Fools won`t take it. - Benjamin Franklin',
             'Diligence is the mother of good luck. - Benjamin Franklin',
             'Never confuse motion with action. - Benjamin Franklin',
-            'Keep your eyes open before marriage, half shut afterwards. - Benjamin Franklin',
+            'Keep your eyes open before marriage, half shut afterward. - Benjamin Franklin',
             'Remember not only to say the right thing in the right place, but far more difficult still, to leave unsaid the wrong thing at the tempting moment. - Benjamin Franklin',
             'Distrust and caution are the parents of security. - Benjamin Franklin',
-            'They who can give up essential liberty to obtain a little temporary safety deserve neither liberty nor safety. - Benjiman Franklin',
+            'They who can give up essential liberty to obtain a little temporary safety deserve neither liberty nor safety. - Benjamin Franklin',
             'He that lives upon hope will die fasting. - Benjamin Franklin',
             'Do not fear mistakes. You will know failure. Continue to reach out. - Benjamin Franklin',
             'A life of leisure and a life of laziness are two things. There will be sleeping enough in the grave. - Benjamin Franklin',
@@ -727,28 +744,28 @@
             'There is nothing impossible to him who will try. - Alexander the Great',
             'Remember upon the conduct of each depends the fate of all. - Alexander the Great',
             'I am indebted to my father for living, but to my teacher for living well. - Alexander the Great',
-            'Whatever possession we gain by our sword cannot be sure or lasting, but the love gained by kindness and modernation is certain and durable. - Alexander the Great',
-            'How should a man be capable of grooming his own horse, or of fubrishing his own spear and helmet, if he allows himself to become unaccustomed to tending even his own person, which his most treasured belonging?. - Alexander the Great',
+            'Whatever possession we gain by our sword cannot be sure or lasting, but the love gained by kindness and moderation is certain and durable. - Alexander the Great',
+            'How should a man be capable of grooming his own horse, or of furbishing his own spear and helmet, if he allows himself to become unaccustomed to tending even his own person, which is his most treasured belonging? - Alexander the Great',
             'You shall, I question not, find a way to the top if you diligently seek for it, for nature hath placed nothing so high that it is out of the reach of industry and valor. - Alexander the Great',
             'I had rather excel others in the knowledge of what is excellent, than in the extent of my power and dominion. - Alexander the Great',
-            'How happy had it been for me had i been slain in the battle. It had been far more noble to have died the victim of the enemy than fall a sacrifice to the rage of my friends. - Alexander the Great',
+            'How happy had it been for me had I been slain in the battle. It had been far more noble to have died the victim of the enemy than fall a sacrifice to the rage of my friends. - Alexander the Great',
             'I am not afraid of an army of lions led by a sheep, I am afraid of an army of sheep led by a lion. - Alexander the Great',
-            'If i were not Alexander, I would be Diogenes. - Alexander the Great',
+            'If I were not Alexander, I would be Diogenes. - Alexander the Great',
             'I do not pilfer victory. - Alexander the Great',
             'Heaven cannot brook two suns, nor earth two masters. - Alexander the Great',
             'I am dying from the treatment of too many physicians. - Alexander the Great',
             'How great are the dangers I face to win a good name in Athens. - Alexander the Great',
-            'A tomb now suffices him for whom the whole world was not sufficent. - Alexander the Great',
+            'A tomb now suffices him for whom the whole world was not sufficient. - Alexander the Great',
             'My father will anticipate everything. He will leave you and me no chance to do a great and brilliant deed. - Alexander the Great',
             'Soldiers, I had lately like to have been taken from you by the attempt of a few desperate men, but by the grace and providence of the gods, I am still preserved. - Alexander the Great',
-            'If we turn our backs of the Scythians who have provoked us, how shamefully shall we march against the revolted Bactrians, but if we pass Tanais and make the Scythians feel, by dear experience, that we are invincible, not in Asia only, it is not to be doubted but that Europe itself, as well as Asia, will come within the bounds of our conquests. - Alexander the Great',
+            'If we turn our backs on the Scythians who have provoked us, how shamefully shall we march against the revolted Bactrians, but if we pass Tanais and make the Scythians feel, by dear experience, that we are invincible, not in Asia only, it is not to be doubted but that Europe itself, as well as Asia, will come within the bounds of our conquests. - Alexander the Great',
             'His father is governor of Media, and though he has the greatest command given him of all the rest of my generals, he still covetously desires more, and my being without issue spurs him on to this wicked design. But Philotas takes wrong measures. - Alexander the Great',
             'So far as I am concerned, I could not be accused of having set eyes, or having wished to set eyes, upon Darius` wife, on the contrary, I have refused even to listen to those who spoke to me of her beauty. - Alexander the Great',
             'For my own part, I would rather excel in knowledge of the highest secrets of philosophy than in arms. - Alexander the Great',
-            'Oh! Most miserable wretch that I am! Why have I not learnt how to swim?. - Alexander the Great',
-            'Who does not desire such a victory by which we shall join places in our Kingdom, so far divided by nature, and for which we shall set up trophies in another conquered world?. - Alexander the Great',
+            'Oh! Most miserable wretch that I am! Why have I not learnt how to swim? - Alexander the Great',
+            'Who does not desire such a victory by which we shall join places in our Kingdom, so far divided by nature, and for which we shall set up trophies in another conquered world? - Alexander the Great',
             'I wish that the Indians believed me a god, for upon the report of an enemy`s valor oftentimes depends the success of a battle, and false reports have many times done as great things as true courage and resolution. - Alexander the Great',
-            'Shall I, that have destroyed my Preservers, reurn home?. - Alexander the Great',
+            'Shall I, that have destroyed my Preservers, return home? - Alexander the Great',
             'I tremble for my country when I reflect God is just, that his justice cannot sleep forever. - Thomas Jefferson',
             'Honesty is the first chapter in the book of wisdom. - Thomas Jefferson',
             'Nothing can stop the man with the right mental attitude from achieving his goal, nothing on earth can help the man with the wrong mental attitude. - Thomas Jefferson',
@@ -757,8 +774,8 @@
             'I have sworn upon the altar of God, eternal hostility against every form of tyranny over the mind of man. - Thomas Jefferson',
             'The man who reads nothing at all is better educated than the man who reads nothing but newspapers. - Thomas Jefferson',
             'Whenever you do a thing, act as if all the world were watching. - Thomas Jefferson',
-            'We hold these truths to be self-evident : that all men are created equal, that they are endowed by their Creator with certain unalienable rights, that among these are life, liberty, and the pursuit of happiness. - Thomas Jefferson',
-            'Question with the boldness even the existence of a God, because, if there be one, he must more approve of the homage of reason, than that of blind-folded fear. - Thomas Jefferson',
+            'We hold these truths to be self-evident: that all men are created equal, that they are endowed by their Creator with certain unalienable rights, that among these are life, liberty, and the pursuit of happiness. - Thomas Jefferson',
+            'Question with the boldness even the existence of a God, because, if there be one, he must more approve of the homage of reason, than that of blindfolded fear. - Thomas Jefferson',
             'The tree of liberty must be refreshed from time to time with the blood of patriots and tyrants. - Thomas Jefferson',
             'When angry count to ten before you speak. If very angry, count to one hundred. - Thoma Jefferson',
             'Peace, commerce and honest friendship with all nations, entangling alliances with none. - Thomas Jefferson',
@@ -769,21 +786,21 @@
             'He who knows best knows how little he knows. - Thomas Jefferson',
             'Mankind are more disposed to suffer, while evils are sufferable, than to right themselves by abolishing the forms to which they are accustomed. - Thomas Jefferson',
             'Never spend your money before you have earned it. - Thomas Jefferson',
-            'Rightful liberty is unobstructed action according to our will within limits drawn around us by the equal rights of others. I do not add `with the limits of the law` because law is often but the tyrant`s will, and always so when it violates the rights of the individual. - Thomas Jefferson',
+            'Rightful liberty is unobstructed action according to our will within limits drawn around us by the equal rights of others. I do not add “with the limits of the law” because law is often but the tyrant`s will, and always so when it violates the rights of the individual. - Thomas Jefferson',
             'Do you want to know who you are? Don`t ask. Act! Action will delineate and define you. - Thomas Jefferson',
             'Timid men prefer the calm of despotism to the tempestuous sea of liberty. - Thomas Jefferson',
-            'Experience hath shewn, that even under the best forms of government those entrusted with power have, in time, and by slow operations, perverted it into tyranny. - Thomas Jefferson',
+            'Experience hath shown, that even under the best forms of government those entrusted with power have, in time, and by slow operations, perverted it into tyranny. - Thomas Jefferson',
             'Were it left to me to decide whether we should have a government without newspapers, or newspapers without a government, I should not hesitate a moment to prefer the latter. - Thomas Jefferson',
             'Whenever the people are well-informed, they can be trusted with their own government. - Thomas Jefferson',
             'Our greatest happiness does not depend on the condition of life in which chance has placed us, but is always the result of a good conscience, good health, occupation, and freedom in all just pursuits. - Thomas Jefferson',
-            'Educate and inform the whole mass of the people...They are the only sure relience for the preservation of our liberty. - Thomas Jefferson',
+            'Educate and inform the whole mass of the people...They are the only sure reliance for the preservation of our liberty. - Thomas Jefferson',
             'A Bill of Rights is what the people are entitled to against every government, and what no just government should refuse, or rest on inference. - Thomas Jefferson',
             'How much pain they have cost us, the evils which have never happened. - Thomas Jefferson',
             'When we get piled upon one another in large cities, as in Europe, we shall become as corrupt as Europe. - Thomas Jefferson',
             'If a nation expects to be ignorant and free, in a state of civilization, it expects what never was and never will be. - Thomas Jefferson',
-            'I hope we shall crush in it`s birth the aristocracy of our monied corporations which dare already to challenge our government to a trial by strength, and bid defiance to the laws of our country. - Thomas Jefferson',
+            'I hope we shall crush in its birth the aristocracy of our monied corporations which dare already to challenge our government to a trial by strength, and bid defiance to the laws of our country. - Thomas Jefferson',
             'Don`t talk about what you have done or what you are going to do. - Thomas Jefferson',
-            'The most successful war seldom pays for it`s losses. - Thomas Jefferson',
+            'The most successful war seldom pays for its losses. - Thomas Jefferson',
             'A wise and frugal government, which shall restrain men from injuring one another, shall leave them otherwise free to regulate their own pursuits of industry and improvement, and shall not take from the mouth of labor the bread it has earned. - Thomas Jefferson',
             'Determine never to be idle. No person will occasion to complain of the want of time who never loses any. It is wonderful how much may be done if we are always. - Thomas Jefferson',
             'Sometimes it is said that man cannot be trusted with the government of himself. Can he, then be trusted with the government of others? Or have we found angels in the form of kings to govern him? Let history answer this question. - Thomas Jefferson',
@@ -794,11 +811,11 @@
             'I believe that every human mind feels pleasure in doing good to another. - Thomas Jefferson',
             'But friendship is precious, not only in the shade, but in the sunshine of life, and thanks to a benevolent arrangement the greater part of life is sunshine. - Thomas Jefferson',
             'Advertisements contain the only truths to be relied on in a newspaper. - Thomas Jefferson',
-            'Merchants have no country. The mere spot they stand on does not constitute so strong an attachment as that form which they draw their gains. - Thomas Jefferson',
+            'Merchants have no country. The mere spot they stand on does not constitute so strong an attachment as that from which they draw their gains. - Thomas Jefferson',
             'It is error alone which needs the support of government. Truth can stand by itself. - Thomas Jefferson',
             'That government is the strongest of which every man feels himself a part. - Thomas Jefferson',
             'Leave all the afternoon for exercise and recreation, which are as necessary as reading. I will rather say more necessary because health is worth more than learning. - Thomas Jefferson',
-            'It is neither wealth nor splendor, but trnquility and occupation which give you happiness. - Thomas Jefferson',
+            'It is neither wealth nor splendor, but tranquillity and occupation which give you happiness. - Thomas Jefferson',
             'The glow of one warm thought is to me worth more than money. - Thomas Jefferson',
             'I would rather be exposed to the inconveniences attending too much liberty than those attending too small a degree of it. - Thomas Jefferson',
             'To compel a man to furnish funds for the propagation of ideas he disbelieves and abhors is sinful and tyrannical. - Thomas Jefferson',
@@ -806,14 +823,14 @@
             'Peace and friendship with all mankind is our wisest policy, and I wish we may be permitted to pursue it. - Thomas Jefferson',
             'All, too, will bear in mind this sacred principle, that though the will of the majority is in all cases to prevail, that will to be rightful must be reasonable, that the minority possess their equal rights, which equal law must protect, and to violate would be oppression. - Thomas Jefferson',
             'The constitutions of most of our States assert that all power is inherent in the people, that...it is their right and duty to be at all times armed. - Thomas Jefferson',
-            'We may consider each generation as a distinct nation, with a right, by the will of it`s majority, to bind themselves, but none to bind the succeeding generation, more than the inhabitants of another country. - Thomas Jefferson',
+            'We may consider each generation as a distinct nation, with a right, by the will of its majority, to bind themselves, but none to bind the succeeding generation, more than the inhabitants of another country. - Thomas Jefferson',
             'We never repent of having eaten too little. - Thomas Jefferson',
             'As we express our gratitude we must never forget that the highest appreciation is not to utter words. - John F. Kennedy',
             'Victory has a thousand fathers, but defeat is an orphan. - John F. Kennedy',
             'Things do not happen. Things are made to happen. - John F. Kennedy',
             'Let us never negotiate out of fear. But let us never fear to negotiate. - John F. Kennedy',
             'Change is the law of life. And those who look only to the past or present are certain to miss the future. - John F. Kennedy',
-            'There are risks and costs to action. But they are far less than the long range risks of comfortable inaction. - John F. Kennedy',
+            'There are risks and costs to action. But they are far less than the long-range risks of comfortable inaction. - John F. Kennedy',
             'Let us not seek the Republican answer or the Democratic answer, but the right answer. Let us not seek to fix the blame for the past. Let us accept our own responsibility for the future. - John F. Kennedy',
             'Physical fitness is not only one of the most important keys to a healthy body, it is the basis of dynamic and creative intellectual activity. - John F. Kennedy',
             'Leadership and learning are indispensable to each other. - John F. Kennedy',
@@ -829,17 +846,17 @@
             'Conformity is the jailer of freedom and the enemy of growth. - John F. Kennedy',
             'Forgive your enemies, but never forget their names. - John F. Kennedy',
             'Those who dare to fail miserably can achieve greatly. - John F. Kennedy',
-            'The ignorance of one voter in a democracy impaires the security of all. - John F. Kennedy',
+            'The ignorance of one voter in a democracy impairs the security of all. - John F. Kennedy',
             'We are tied to the ocean. And when we go back to the sea, whether it is to sail or to watch - we are going back from whence we came. - John F. Kennedy',
             'Mankind must put an end to war before war puts an end to mankind. - John F. Kennedy',
             'Let every nation know, whether it wishes us well or ill, that we shall pay any price, bear any burden, meet any hardship, support any friend, oppose any foe to assure the survival and the success of liberty. - John F. Kennedy',
             'When written in Chinese, the word `crisis` is composed of two characters. One represents danger and the other represents opportunity. - John F. Kennedy',
             'A man does what he must - in spite of personal consequences, in spite of obstacles and dangers and pressures - and that is the basis of all human morality. - John F. Kennedy',
-            'A nation that is afraid to let it`s people judge the truth and falsehood in an open market is a nation that is afraid of it`s people. - John F. Kennedy',
-            'Peace is a daily, a weekly, a monthly process, gradually changing opinions, slowly eroding old barriers, quitely building new structures. - John F. Kennedy',
+            'A nation that is afraid to let its people judge the truth and falsehood in an open market is a nation that is afraid of its people. - John F. Kennedy',
+            'Peace is a daily, a weekly, a monthly process, gradually changing opinions, slowly eroding old barriers, quietly building new structures. - John F. Kennedy',
             'We must use time as a tool, not as a couch. - John F. Kennedy',
             'The great enemy of the truth is very often not the lie, deliberate, contrived and dishonest, but the myth, persistent, persuasive and unrealistic. - John F. Kennedy',
-            'Our most basic common link is that we all inhabit this planet. We breathe the same air. We all cherish out children`s future. And we are all mortal. - John F. Kennedy',
+            'Our most basic common link is that we all inhabit this planet. We breathe the same air. We all cherish our children`s future. And we are all mortal. - John F. Kennedy',
             'The time to repair the roof is when the sun is shining. - John F. Kennedy',
             'Man is still the most extraordinary computer of all. - John F. Kennedy',
             'The greatest our knowledge increases the more our ignorance unfolds. - John F. Kennedy',
@@ -852,24 +869,24 @@
             'It is an unfortunate fact that we can secure peace only by preparing for war. - John F. Kennedy',
             'We are not here to curse the darkness, but to light the candle that can guide us thru that darkness to a safe and sane future. - John F. Kennedy',
             'There is always inequality in life. Some men are killed in a war and some men are wounded and some men never leave the country. Life is unfair. - John F. Kennedy',
-            'Let both sides seek to invoke the wonders of science instead of it`s terrors. Together let us explore the stars, conquer the deserts, eradicate disease, tap the ocean depths, and encourage the arts of commerce. - John F. Kennedy',
+            'Let both sides seek to invoke the wonders of science instead of its terrors. Together let us explore the stars, conquer the deserts, eradicate disease, tap the ocean depths, and encourage the arts of commerce. - John F. Kennedy',
             'War will exist until that distant day when the conscientious objector enjoys the same reputation and prestige that the warrior does today. - John F. Kennedy',
-            'Tolerance implies no lack of commitment to one`s own beliefs. Rather is condemns the oppression or persecution of others. - John F. Kennedy',
+            'Tolerance implies no lack of commitment to one`s own beliefs. Rather it condemns the oppression or persecution of others. - John F. Kennedy',
             'The world is very different now. For man holds in his mortal hands the power to abolish all forms of human poverty, and all forms of human life. - John F. Kennedy',
             'Our progress as a nation can be no swifter than our progress in education. The human mind is our fundamental resource. - John F. Kennedy',
             'Mothers all want their sons to grow up to be president, but they don`t want them to become politicians in the process. - John F. Kennedy',
-            'In the long history of the world, only a few generations have been granted the role of defending freedom in it`s hour of maximum danger. I do not shrink from this responsibility - I welcome it. - John F. Kennedy',
+            'In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility - I welcome it. - John F. Kennedy',
             'Our growing softness, our increasing lack of physical fitness, is a menace to our security. - John F. Kennedy',
             'The best road to progress is freedom`s road. - John F. Kennedy',
-            'Domestic policy can only defeat us, foreign policy can kill us. - John F. Kennedy',
+            'Domestic policy can only defeat us, foreign policy can kill us. - John F. Kennedy',           
             'Experience is the teacher of all things. - Julius Caesar',
-            'I came, I saw, I coquered. - Julius Caesar',
+            'I came, I saw, I conquered. - Julius Caesar',
             'I had rather be first in a village than second at Rome. - Julius Caesar',
             'If you must break the law, do it to seize power: in all other cases observe it. - Julius Caesar',
             'Cowards die many times before their actual deaths. - Julius Caesar',
             'It is better to create than to learn! Creating is the essence of life. - Julius Caesar',
             'Men in general are quick to believe that which they wish to be true. - Julius Caesar',
-            'Which death is preferably to every other? `The unexpected`. - Julius Caesar',
+            'Which death is preferable to every other? `The unexpected`. - Julius Caesar',
             'It is easier to find men who will volunteer to die, than to find those who are willing to endure pain with patience. - Julius Caesar',
             'I love the name of honor, more than I fear death. - Julius Caesar',
             'It is not these well-fed long-haired men that I fear, but the pale and the hungry-looking. - Julius Caesar',
@@ -882,7 +899,7 @@
             'The die is cast. - Julius Caesar',
             'Men willingly believe what they wish. - Julius Caesar',
             'As a rule, men worry more about what they can`t see than about what they can. - Julius Caesar',
-            'Men freely belive that which they desire. - Julius Caesar',
+            'Men freely believe that which they desire. - Julius Caesar',
             'Fortune, which has a great deal of power in other matters but especially in war, can bring about great changes in a situation through very slight forces. - Julius Caesar',
             'I have lived long enough to satisfy both nature and glory. - Julius Caesar',
             'I have lived long enough both in years and accomplishments. - Julius Caesar',
@@ -904,9 +921,9 @@
             'Glory is fleeting, but obscurity is forever. - Napoleon Bonaparte',
             'There are only two forces in the world, the sword and the spirit. In the long run the sword will always be conquered by the spirit. - Napoleon Bonaparte',
             'To do all that one is able to do, is to be a man, to do all that one would like to do, is to be a god. - Napoleon Bonaparte',
-            'Men are moved by two levers only, fear and self interest. - Napoleon Bonaparte',
+            'Men are moved by two levers only, fear and self-interest. - Napoleon Bonaparte',
             'If you wish to be a success in the world, promise everything, deliver nothing. - Napoleon Bonaparte',
-            'In politics stupidity is not a handicap. - Napoleon Bonaparte',
+            'In politics, stupidity is not a handicap. - Napoleon Bonaparte',
             'You must not fight too often with one enemy, or you will teach him all your art of war. - Napoleon Bonaparte',
             'Ability is nothing without opportunity. - Napoleon Bonaparte',
             'The strong man is the one who is able to intercept at will the communication between the senses and the mind. - Napoleon Bonaparte',
@@ -915,13 +932,13 @@
             'Power is my mistress. I have worked too hard at her conquest to allow anyone to take her away from me. - Napoleon Bonaparte',
             'There is no such thing as accident, it is fate misnamed. - Napoleon Bonaparte',
             'He who fears being conquered is sure of defeat. - Napoleon Bonaparte',
-            'An army marches on it`s stomach. - Napoleon Bonaparte',
+            'An army marches on its stomach. - Napoleon Bonaparte',
             'Soldiers generally win battles, generals get credit for them. - Napoleon Bonaparte',
             'Ten people who speak make more noise than ten thousand who are silent. - Napoleon Bonaparte',
             'Nothing is more difficult, and therefore more precious, than to be able to decide. - Napoleon Bonaparte',
             'The first virtue is a soldier is endurance of fatigue, courage is only the second virtue. - Napoleon Bonaparte',
             'From the heights of these pyramids, forty centuries look down on us. - Napoleon Bonaparte',
-            'I love power. But it is as an artist that I love it. I love it as a musician loves his violin, to draw out it`s sounds and chords and harmonies. - Napoleon Bonaparte',
+            'I love power. But it is as an artist that I love it. I love it as a musician loves his violin, to draw out its sounds and chords and harmonies. - Napoleon Bonaparte',
             'It is the cause, not the death, that makes the martyr. - Napoleon Bonaparte',
             'Imagination rules the world. - Napoleon Bonaparte',
             'Four hostile newspapers are more feared than a thousand bayonets. - Napoleon Bonaparte',
@@ -936,12 +953,12 @@
             'A man will fight harder for his interests than for his rights. - Napoleon Bonaparte',
             'There is only one step from the sublime to the ridiculous. - Napoleon Bonaparte',
             'Religion is excellent stuff for keeping common people quiet. - Napoleon Bonaparte',
-            'Among those who dislike oppression are many who like to opress. - Napoleon Bonaparte',
+            'Among those who dislike oppression are many who like to oppress. - Napoleon Bonaparte',
             'A revolution is an idea which has found it`s bayonets. - Napoleon Bonaparte',
             'If I had to choose a religion, the sun as the universal giver of life would be my god. - Napoleon Bonaparte',
             'Doctors will have more lives to answer for in the next world than even we generals. - Napoleon Bonaparte',
             'Men take only their needs into consideration - never their abilities. - Napoleon Bonaparte',
-            'Music is the voice that tells us that the humna race is greater than it knows. - Napoleon Bonaparte',
+            'Music is the voice that tells us that the human race is greater than it knows. - Napoleon Bonaparte',
             'A true man hates no one. - Napoleon Bonaparte',
             'Respect the burden. - Napoleon Bonaparte',
             'He who knows how to flatter also knows how to slander. - Napoleon Bonaparte',
@@ -953,32 +970,32 @@
             'You shall find out how salt is the taste of another man`s bread, and how hard is the way up and down another man`s stairs. - Dante Alighieri',
             'From a little spark may burst a flame. - Dante Alighieri',
             'Follow your own star. - Dante Alighieri',
-            'In the middle of the journey of our life I came to myself within a dark wood where the straight way was lost. - Dante Alighieri',
+            'In the middle of the journey of our life, I came to myself within a dark wood where the straight way was lost. - Dante Alighieri',
             'All hope abandon, ye who enter here. - Dante Alighieri',
-            'Heat cannot be seperated from fire, or beauty from The Eternal. - Dante Alighieri',
-            'The darkest places in hell are reserved for those who maintain their neitrality in times of moral crisis. - Dante Alighieri',
+            'Heat cannot be separated from fire, or beauty from The Eternal. - Dante Alighieri',
+            'The darkest places in hell are reserved for those who maintain their neutrality in times of moral crisis. - Dante Alighieri',
             'Nature is the art of God. - Dante Alighieri',
             'I wept not, so to stone within I grew. - Dante Alighieri',
-            'Be as a tower family set. Shakes not it`s top for any blast that blows. - Dante Alighieri',
+            'Be as a tower family set. Shakes not its top for any blast that blows. - Dante Alighieri',
             'The sad souls of those who lived without blame and without praise. - Dante Alighieri',
             'If the present world go astray, the cause is in you, in you it is to be sought. - Dante Alighieri',
             'I love to doubt as well as know. - Dante Alighieri',
-            ' O conscience, upright and stainless, how bitter a sting to thee is a little fault. - Dante Alighieri',
+            'O conscience, upright and stainless, how bitter a sting to thee is a little fault. - Dante Alighieri',
             'At this high moment, ability failed my capacity to describe. - Dante Alighieri',
-            'The customes and fashions of men change like leaves on the bough, some of which go and others come. - Dante Alighieri',
+            'The customs and fashions of men change like leaves on the bough, some of which go and others come. - Dante Alighieri',
             'Worldly fame is but a breath of wind that blows now this way, and now that, and changes name as it changes direction. - Dante Alighieri',
             'Pride, envy, avarice - these are the sparks have set on fire the hearts of all men. - Dante Alighieri',
             'Heaven wheels above you, displaying to you her eternal glories, and still your eyes are on the ground. - Dante Alighieri',
             'No one thinks of how much blood it costs. - Dante Alighieri',
-            'A mighty flame follweth a tiny spark. - Dante Alighieri',
+            'A mighty flame followeth a tiny spark. - Dante Alighieri',
             'The secret of getting things done is to act. - Dante Alighieri',
             'The more perfect a thing is, the more susceptible to good and bad treatment it is. - Dante Alighieri',
-            'Will cannot be quenched against it`s will. - Dante Alighieri',
+            'Will cannot be quenched against its will. - Dante Alighieri',
             'Small projects need much more help than great. - Dante Alighieri',
             'He listens well who takes notes. - Dante Alighieri',
             'Art, as far as it is able, follows nature, as a pupil imitates his master, thus your art must be, as it were, God`s grandchild. - Dante Alighieri',
             'If the freedom of speech is taken away then dumb and silent we may be led, like sheep to the slaughter. - George Washington',
-            'Truth will ulimately prevail where there is pains to bring it to light. - George Washington',
+            'Truth will ultimately prevail where there is pain to bring it to light. - George Washington',
             'It is better to be alone than in a bad company. - George Washington',
             'To be prepared for war is one of the most effective means of preserving peace. - George Washington',
             'Guard against the impostures of pretended patriotism. - George Washington',
@@ -992,8 +1009,8 @@
             'My first wish is to see this plague of mankind, war, banished from the earth. - George Washington',
             'There is nothing which can better deserve your patronage, than the promotion of science and literature. Knowledge is in every country the surest basis of public happiness. - George Washington',
             'The Constitution is the guide which I never will abandon. - George Washington',
-            'It will be found an unjust and unwise jealousy to deprive a man of him natural liberty upon the supposition he may abuse it. - George Washington',
-            'Let your heart feel for the affictions and distress of everyone, and let your hand give in proportion to your purse. - George Washington',
+            'It will be found an unjust and unwise jealousy to deprive a man of his natural liberty upon the supposition he may abuse it. - George Washington',
+            'Let your heart feel for the afflictions and distress of everyone, and let your hand give in proportion to your purse. - George Washington',
             'It is better to offer no excuse than a bad one. - George Washington',
             'Observe good faith and justice toward all nations. Cultivate peace and harmony with all. - George Washington',
             'Associate with men of good quality if you esteem your own reputation, for it is better to be alone than in bad company. - George Washington',
@@ -1006,7 +1023,7 @@
             'Labor to keep alive in your breast that little spark of celestial fire, called conscience. - George Washington',
             'The basis of our political system is the right of the people to make and to alter their constitutions of government. - George Washington',
             'Let us with caution indulge the supposition that morality can be maintained without religion. Reason and experience both forbid us to expect that national morality can prevail in exclusion of religious principle. - George Washington',
-            'I can only say that there is not a man living who wishes more sincerely than i do, to see a plan adopted for the abolition of it - but there is only one proper and effectual mode by which it can be accomplished, and that is by Legislative authority, and this, as far as my suffrage will go, shall never be wanting. - George Washington',
+            'I can only say that there is not a man living who wishes more sincerely than I do, to see a plan adopted for the abolition of it - but there is only one proper and effectual mode by which it can be accomplished, and that is by Legislative authority, and this, as far as my suffrage will go, shall never be wanting. - George Washington',
             'The time is near at hand which must determine whether Americans are to be free men or slaves. - George Washington',
             'Some day, following the example of the United States of America, there will be a United States of Europe. - George Washington',
             'Laws made by common consent must not be trampled on by individuals. - George Washington',
@@ -1015,13 +1032,13 @@
             'Friendship is a plant of slow growth and must undergo and withstand the shocks of adversity before it is entitled to the appellation. - George Washington',
             'Bad seed is a robbery of the worst kind: for your pocket-book not only suffers by it, but your preparations are lost and a season passes away unimproved. - George Washington',
             'The alternate domination of one faction over another, sharpened by the spirit of revenge natural to party dissension, which in different ages and countries has perpetrated the most horrid enormities, is itself a frightful despotism. But this leads at length to a more formal and permanent despotism. - George Washington',
-            'I walk on untrodden grounf. There is scarcely any part of my conduct which may not hereafter be drawn into precedent. - George Washington',
+            'I walk on untrodden ground. There is scarcely any part of my conduct which may not hereafter be drawn into precedent. - George Washington',
             'Mankind, when left to themselves, are unfit for their own government. - George Washington',
             'It may be laid down as a primary position, and the basis of our system, that every Citizen who enjoys the protection of a Free Government, owes not only a proportion of his property, but even of his personal services to the defense of it. - George Washington',
             'I beg you be persuaded that no one would be more zealous than myself to establish effectual barriers against the horrors of spiritual tyranny, and every species of religious persecution. - George Washington',
-            'Being no bigot myself to any mode of worship, I am disposed to endulge the professors of Christianity in the church, that road to heaven which to them shall seem the most direct plainest easiest and least liable to exception. - George Washington',
-            'Over grown military establishments are under any form of government inauspicious to liberty, and are to be regarded as particularly hostile to republican liberty. - George Washington',
-            'I have no other view than to promote the public good, and am unambitious of honors not founded in the approbation of my Country',
+            'Being no bigot myself to any mode of worship, I am disposed to indulge the professors of Christianity in the church, that road to heaven which to them shall seem the most direct plainest easiest and least liable to exception. - George Washington',
+            'Overgrown military establishments are under any form of government inauspicious to liberty, and are to be regarded as particularly hostile to republican liberty. - George Washington',
+            'I have no other view than to promote the public good, and am unambitious of honors not founded in the approbation of my Country. - George Washington',
             'Let your Discourse with Men of Business be Short and Comprehensive. - George Washington',
             'If we desire to avoid insult, we must be able to repel it, if we desire to secure peace, one of the most powerful instruments of our rising prosperity, it must be known, that we are at all times ready for war. - George Washington',
             'Experience teaches us that it is much easier to prevent an enemy from posting themselves than it is to dislodge them after they have got possession. - George Washington',
@@ -1039,8 +1056,8 @@
             'Most folks are as happy as they make up their minds to be. - Abraham Lincoln',
             'You can fool all the people some of the time, and some of the people all the time, but you cannot fool all the people all the time. - Abraham Lincoln',
             'Be sure you put your feet in the right place, then stand firm. - Abraham Lincoln',
-            'I am a slow walker, but i never walk back. - Abraham Lincoln',
-            'I will prepare and some day my chance will come. - Abraham Lincoln',
+            'I am a slow walker, but I never walk back. - Abraham Lincoln',
+            'I will prepare and someday my chance will come. - Abraham Lincoln',
             'Sir, my concern is not whether God is on our side, my greatest concern is to be on God`s side, for God is always right. - Abraham Lincoln',
             'Always bear in mind that your own resolution to succeed is more important than any other. - Abraham Lincoln',
             'I am not bound to win, but I am not bound to succeed, but I am bound to live by the light that I have. I must stand with anybody that stands right, and stand with him while he is right, and part with him when he goes wrong. - Abraham Lincoln',
@@ -1058,7 +1075,7 @@
             'I do the very best I know how - the very best I can, and I mean to keep on doing so until the end. - Abraham Lincoln',
             'The shepherd drives the wolf from the sheep`s throat, for which the sheep thanks the shepherd as his liberator, while the wolf denounces him for the same act as the destroyer of liberty. Plainly, the sheep and the wolf are not agreed upon a definition of liberty. - Abraham Lincoln',
             'I am a firm believer in the people. If given the truth, they can be depended upon to meet any national crisis. The great point is to bring them the real facts. - Abraham Lincoln',
-            'Do I not destroy my enemies when I make them my friends?. - Abraham Lincoln',
+            'Do I not destroy my enemies when I make them my friends? - Abraham Lincoln',
             'My dream is of a place and a time where America will once again be seen as the last best hope of earth. - Abraham Lincoln',
             'Marriage is neither heaven nor hell, it is simply purgatory. - Abraham Lincoln',
             'No man is good enough to govern another man without the other`s consent. - Abraham Lincoln',
@@ -1071,7 +1088,7 @@
             'No matter how much cats fight, there always seem to be plenty of kittens. - Abraham Lincoln',
             'I remember my mother`s prayers and they have always followed me. They have clung to me all my life. - Abraham Lincoln',
             'You have to do your own growing no matter how tall your grandfather was. - Abraham Lincoln',
-            'Lets have faith that right makes might, and in that faith let us, to the end, dare to do our duty as we understand it. - Abraham Lincoln',
+            'Let`s have faith that right makes might, and in that faith let us, to the end, dare to do our duty as we understand it. - Abraham Lincoln',
             'The best way to get a bad law repealed is to enforce it strictly. - Abraham Lincoln',
             'He has a right to criticize, who has a heart to help. - Abraham Lincoln',
             'Avoid popularity if you would have peace. - Abraham Lincoln',
@@ -1089,7 +1106,7 @@
             'There is no instance of a nation benefitting from prolonged warfare. - Sun Tzu',
             'Know your enemy and know yourself and you can fight a hundred battles without disaster. - Sun Tzu',
             'The general who wins the battle makes many calculations in his temple before the battle is fought. The general who loses makes but few calculations beforehand. - Sun Tzu',
-            'Know thys self, know the enemy. A thousand batt;es, a thousand victories. - Sun Tzu',
+            'Know thy self, know the enemy. A thousand battles, a thousand victories. - Sun Tzu',
             'If fighting is sure to result in victory, then you must fight, even though the ruler forbids it, if fighting will not result in victory, then you must not fight even at the ruler`s bidding. - Sun Tzu',
             'He who is prudent and lies in wait for an enemy who is not, will be victorious. - Sun Tzu',
             'If you are far from the enemy, make him believe you are near. - Sun Tzu',
@@ -1097,7 +1114,7 @@
             'He will win who knows when to fight and when not to fight. - Sun Tzu',
             'If your opponent is of choleric temper, irritate him. - Sun Tzu',
             'There has never been a protracted war from which a country has benefited. - Sun Tzu',
-            'The quality of decision is like the well-timed swoop of a falcon which enables it to strike and destroy it`s victim. - Sun Tzu',
+            'The quality of decision is like the well-timed swoop of a falcon which enables it to strike and destroy its victim. - Sun Tzu',
             'Quickness is the essence of the war. - Sun Tzu',
             'Balk the enemy`s power, force him to reveal himself. - Sun Tzu',
             'If ignorant both of your enemy and yourself, you are certain to be in peril. - Sun Tzu',
@@ -1116,7 +1133,7 @@
             'Humility is the solid foundation of all virtues. - Confucius',
             'He who learns but does not think, is lost! He who thinks but does not learn is in great danger. - Confucius',
             'Heaven means to be one with God. - Confucius',
-            'We should feel sorrow, but not sink under it`s oppression. - Confucius',
+            'We should feel sorrow, but not sink under its oppression. - Confucius',
             'Only the wisest and stupidest of men never change. - Confucius',
             'If we don`t know life, how can we know death. - Confucius',
             'The will to win, the desire to succeed, the urge to reach your full potential...these are the keys that will unlock the door to personal excellence. - Confucius',
@@ -1133,12 +1150,12 @@
             'Learning without thought is labor lost, thought without learning is perilous. - Confucius',
             'You cannot open a book without learning something. - Confucius',
             'The superior man thinks always of virtue, the common man thinks of comfort. - Confucius',
-            'Without feelings of respect, what is there to distinguish men from beasts?. - Confucius',
+            'Without feelings of respect, what is there to distinguish men from beasts? - Confucius',
             'Death and life have their determined appointments, riches and honors depend upon heaven. - Confucius',
             'Wisdom, compassion, and courage are the three universally recognized moral qualities of men. - Confucius',
             'It is more shameful to distrust our friends than to be deceived by them. - Confucius',
             'To see and listen to the wicked is already the beginning of wickedness. - Confucius',
-            'If you look into your own heart, and you find nothing wrong there, what is there to worry about? What is there to fear. - Confucius',
+            'If you look into your own heart, and you find nothing wrong there, what is there to worry about? What is there to fear? - Confucius',
             'The superior man acts before he speaks, and afterwards speaks according to his action. - Confucius',
             'The superior man is modest in his speech, but exceeds in his actions. - Confucius',
             'The object of the superior man is truth. - Confucius',
@@ -1149,7 +1166,7 @@
             'Knowledge will give you power, but character respect. - Bruce Lee',
             'The key to immortality is first living a life worth remembering. - Bruce Lee',
             'I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times. - Bruce Lee',
-            'If you always put limit on everything you do, physical or anything else. It will spread into your work and into your life. There are no limits. There are only plateaus, and you must not stay there, you must go beyond them. - Bruce Lee',
+            'If you always put a limit on everything you do, physical or anything else. It will spread into your work and into your life. There are no limits. There are only plateaus, and you must not stay there, you must go beyond them. - Bruce Lee',
             'Showing off is the fool`s idea of glory. - Bruce Lee',
             'Love is like a friendship caught on fire. In the beginning a flame, very pretty, often hot and fierce, but still only light and flickering. As love grows older, our hearts mature and our love becomes as coals, deep-burning and unquenchable. - Bruce Lee',
             'Notice that the stiffest tree is most easily cracked, while the bamboo or willow survives by bending with the wind. - Bruce Lee',
@@ -1168,8 +1185,8 @@
             'Obey the principles without being bound by them. - Bruce Lee',
             'You just wait. I`m going to be the biggest Chinese star in the world. - Bruce Lee',
             'Take things as they are. Punch when you have to punch. Kick when you have to kick. - Bruce Lee',
-            'To me, the extraordinary aspect of martial arts lies in it`s simplicity. The easy way is also the right way, and martial arts is nothing at all special, the closer to the true way of martial arts, the less wastage of expression there is. - Bruce Lee',
-            'A revolution is an idea which has found it`s bayonets. - Napoleon Bonaparte',
+            'To me, the extraordinary aspect of martial arts lies in its simplicity. The easy way is also the right way, and martial arts is nothing at all special, the closer to the true way of martial arts, the less wastage of expression there is. - Bruce Lee',
+            'A revolution is an idea which has found its bayonets. - Napoleon Bonaparte',
             'The best way to keep one`s word is not to give it. - Napoleon Bonaparte',
             'There are only two forces that unite men - fear and interest. - Napoleon Bonaparte',
             'One must change one`s tactic every ten years if one wishes to maintain one`s superiority. - Napoleon Bonaparte',
@@ -1183,8 +1200,8 @@
             'One should never forbid what one lacks the power to prevent. - Napoleon Bonaparte',
             'The great proof of madness is the disproportion of one`s design to one`s means. - Napoleon Bonaparte',
             'The act of policing is, in order to punish less often, to punish more severely. - Napoleon Bonaparte',
-            'A revolution can be neither made nor stopped. The only thing that can be done is for one of several of it`s children to give it a direction by dint of victories. - Napoleon Bonaparte',
-            'The human race is governed by it`s imagination. - Napoleon Bonaparte',
+            'A revolution can be neither made nor stopped. The only thing that can be done is for one of several of its children to give it a direction by dint of victories. - Napoleon Bonaparte',
+            'The human race is governed by its imagination. - Napoleon Bonaparte',
             'Medicines are only fit for old people. - Napoleon Bonaparte',
             'The infectiousness of crime is like that of the plague. - Napoleon Bonaparte',
             'Now this is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning. - Winston Churchill',
@@ -1201,22 +1218,22 @@
             'To improve is to change, to be perfect is to change often. - Winston Churchill',
             'You can always count on Americans to do the right thing - after they`ve tried everything else. - Winston Churchill',
             'If Hitler invaded hell I would make at least a favourable reference to the devil in the House of Commons. - Winston Churchill',
-            'No one can guarantee in war, but onlt deserve it. - Winston Churchill',
-            'I am fond of pigd. Dogs look up to us. Cats looks down on us. Pigs treat us as equals. - Winston Churchill',
+            'No one can guarantee in war, but only deserve it. - Winston Churchill',
+            'I am fond of pigs. Dogs look up to us. Cats look down on us. Pigs treat us as equals. - Winston Churchill',
             'Russia is a riddle wrapped in a mystery inside an enigma. - Winston Churchill',
             'History will be kind to me for I intend to write it. - Winston Churchill',
             'Never in the field of human conflict was so much owed by so many to so few. - Winston Churchill',
-            'A lie gets halfway around the world before the truth has a chance to get it`s pants on. - Winston Churchill',
+            'A lie gets halfway around the world before the truth has a chance to get its pants on. - Winston Churchill',
             'The price of greatness is responsibility. - Winston Churchill',
             'Kites rise the highest against the wind - not with it. - Winston Churchill',
             'The truth is incontrovertible. Malice may attack it, ignorance may deride it, but in the end, there it is. - Winston Churchill',
             'This is no time for ease and comfort. It is time to dare and endure. - Winston Churchill',
-            'History is written by thr victors. - Winston Churchill',
+            'History is written by the victors. - Winston Churchill',
             'Courage is rightly esteemed the first of human qualities...because it is the quality which guarantees all others. - Winston Churchill',
             'Solitary trees, if they grow at all, grow strong. - Winston Churchill',
             'In wartime, truth is so precious that she should always be attended by a bodyguard of lies. - Winston Churchill',
             'We are masters of the unsaid words, but slaves of those we let slip out. - Winston Churchill',
-            'All the great things are simple, and many can be expressed in a single word : freedom, justice, honor, duty, mercy, hope. - Winston Churchill',
+            'All the great things are simple, and many can be expressed in a single word: freedom, justice, honor, duty, mercy, hope. - Winston Churchill',
             'The farther backward you can look, the farther forward you can see. - Winston Churchill',
             'Victory at all costs, victory in spite of all terror, victory however long and hard the road may be, for without victory, there is no survival. - Winston Churchill',
             'A fanatic is one who can`t change his mind and won`t change the subject. - Winston Churchill',
@@ -1230,7 +1247,7 @@
             'I am an optimist. It does not seem too much use being anything else. - Winston Churchill',
             'There is no such thing as public opinion. There is only published opinion. - Winston Churchill',
             'Perhaps it is better to be irresponsible and right, than to be responsible and wrong. - Winston Churchill',
-            'An appreaser is one who feeds a crocodile, hoping it will eat him last. - Winston Churchill',
+            'An appeaser is one who feeds a crocodile, hoping it will eat him last. - Winston Churchill',
             'If you have an important point to make, don`t try to be subtle or clever. Use a pile driver. Hit the point once. Then come back and hit it again. Then hit it a third time - a tremendous whack. - Winston Churchill',
             'To build may have to be the slow and laborious task of years. To destroy can be the thoughtless act of a single day. - Winston Churchill',
             'I never worry about action, but only inaction. - Winston Churchill',
@@ -1241,14 +1258,14 @@
             'Only a man who has felt ultimate despair is capable of feeling ultimate bliss. - Alexandre Dumas',
             'A person who doubts himself is like a man who would enlist in the ranks of his enemies and bear arms against himself. He makes his failure certain by himself being the first person to be convinced of it. - Alexandre Dumas',
             'If God were suddenly condemned to live the life which He has inflicted upon men, He would kill Himself. - Alexandre Dumas',
-            'It is rare that one can see is a little boy the promise of a man, but one can almost always see in a little girl the threat of a woman. - Alexandre Dumas',
+            'It is rare that one can see in a little boy the promise of a man, but one can almost always see in a little girl the threat of a woman. - Alexandre Dumas',
             'All human wisdom is summed up in two words, wait and hope. - Alexandre Dumas',
             'All for one, one for all, that is our device. - Alexandre Dumas',
             'It is necessary to have wished for death in order to know how good it is to live. - Alexandre Dumas',
             'All generalizations are dangerous, even this one. - Alexandre Dumas',
             'I prefer rogues to imbeciles, because they sometimes take a rest. - Alexandre Dumas',
             'The greatest happiness is to scatter your enemy and drive him before you. To see his cities reduced to ashes. To see those who love him shrouded and in tears. And to gather to your bosom his wives and daughters. - Genghis Khan',
-            'Not even a mighty warrior can break a frail arrow when it is multiplied and supported by it`s fellows. As long as you brothers support one another and render assistance to one another, your enemies can never gain the victory over you. But if you fall away from each other your enemy can break you like frail arrows, one at a time. - Genghis Khan',
+            'Not even a mighty warrior can break a frail arrow when it is multiplied and supported by its fellows. As long as you brothers support one another and render assistance to one another, your enemies can never gain the victory over you. But if you fall away from each other your enemy can break you like frail arrows, one at a time. - Genghis Khan',
             'If you had not committed great sins, God would not have sent a punishment like me upon you. - Genghis Khan',
             'I hate luxury. I exercise moderation...It will be easy to forget your vision and purpose once you have fine clothes, fast horses and beautiful women. In which case, you will be no better than a slave, and you will surely lose everything. - Genghis Khan',
             'If you`re afraid - don`t do it, if you`re doing it - don`t be afraid. - Genghis Khan',
@@ -1256,11 +1273,11 @@
             'Remember, you have no companions but your shadow. - Genghis Khan',
             'An action committed in anger is an action doomed to failure. - Genghis Khan',
             'Come and sip from the cup of destruction. - Genghis Khan',
-            'It is not sufficent that I succeed - all others must fail. - Genghis Khan',
+            'It is not sufficient that I succeed - all others must fail. - Genghis Khan',
             'A leader can never be happy until his people are happy. - Genghis Khan',
             'All who surrender will be spared, whoever does not surrender but opposes with struggle and dissension, shall be annihilated. - Genghis Khan',
             'Conquering the world on horseback is easy, it is dismounting and governing that is hard. - Genghis Khan',
-            'Heaven grew weary of the excessive pride and luxury of China...I am from the Barbaric North. I wear the same clothing and eat the same food as the cowherds and horse-herders. We make the same sacrifices and we share our riches. I look upon the nation as a new-born child and I care for my soldiers as though they were my brothers. - Genghis Khan',
+            'Heaven grew weary of the excessive pride and luxury of China...I am from the Barbaric North. I wear the same clothing and eat the same food as the cowherds and horse herders. We make the same sacrifices and we share our riches. I look upon the nation as a new-born child and I care for my soldiers as though they were my brothers. - Genghis Khan',
             'There is no good in anything until it is finished. - Genghis Khan',
             'With Heaven`s aid I have conquered for you a huge empire. But my life was too short to achieve the conquest of the world. The task is left for you. - Genghis Khan',
             'Even when a friend does something you do not like, he continues to be your friend. - Genghis Khan',
@@ -1270,7 +1287,7 @@
             'One arrow alone can be easily broken but many arrows are indestructible. - Genghis Khan',
             'Our whole life is set up in the path of least resistance. We don`t want to suffer. We don`t want to feel discomfort. So the whole time, we`re living our lives in a very comfortable area. There`s no growth in that. - David Goggins',
             'You have to be willing to go to war with yourself and create a whole new identity. - David Goggins',
-            'Remembering what you`ve been through and how that has strengthened your mindset can lift you out of a negative brain loop and help you bypass those weak, one-second impulses to give in. Even if you`re feeling low and beat down by life right now, I guarantee you can think of a time or two when you overcame odds and tasted success. - David Goggins',
+            'Remembering what you`ve been through and how that has strengthened your mindset can lift you out of a negative brain loop and help you bypass those weak, one-second impulses to give in. Even if you`re feeling low and beat down by life right now, I guarantee you can think of a time or two when you overcame the odds and tasted success. - David Goggins',
             'The only way you gain mental toughness is to do things you`re not happy doing. If you continue doing things that you`re satisfied and make you happy, you`re not getting stronger. You`re staying where you`re at. Either you`re getting better, or you`re getting worse. You`re not staying the same. - David Goggins',
             'I had a rough childhood coming up, and I just took all that negative energy and made it very positive for myself to drive me. I`m a very driven person. I have passion that almost scares people, just to be successful and make it no matter what. - David Goggins',
             'A warrior is not a person that carries a gun. The biggest war you ever go through is right between your own ears. It`s in your mind. We`re all going through a war in our mind, and we have to callus our mind to fight that war and to win that war. - David Goggins',
@@ -1281,7 +1298,7 @@
             'It`s like a muscle - if you stop going to the gym or stop running, you get weak. The military teaches you these great values, but we don`t keep up the discipline on our own, and we lose it. So wherever you go, keep that discipline up. - David Goggins',
             'When you`re in hell, you forget how great you really are because you`re suffering and you forget the great things you`ve done. - David Goggins',
             'Before you start a goal - let`s take care of our insecurities because they are going to surface when you put yourself in the crucible and you`re suffering. - David Goggins',
-            'If you choose to do something, attack it. You can hate me, but there`s one thing you can`t say about me - that I didn`t attck it. - David Goggins',
+            'If you choose to do something, attack it. You can hate me, but there`s one thing you can`t say about me - that I didn`t attack it. - David Goggins',
             'I swam underwater for 50 meters at a time and walked the length of the pool underwater, with a brick in each hand, all on a single breath. - David Goggins',
             'Back in the day, what motivated me was overcoming myself. Now I believe in being a leader. I`ve done it all - I`m good. Now it`s about setting an example for others to follow. I can`t just talk it - I have to live it. - David Goggins',
             'Boot camp sucks - SEAL training sucks - but you know what? That`s what makes you good. - David Goggins',
@@ -1290,10 +1307,10 @@
             'Read a record number of books in a given month. If you`re focused on intellectual growth, train yourself to study harder and longer than ever before. - David Goggins',
             'If you sit there and have that mentality of `triple down on what you`re good at,` you`re never going to grow. You`re always going to stay the same. - David Goggins',
             'When you tell a recruiter that you`re almost 300 pounds and you want to be a SEAL, it doesn`t go too well. I got hung up on a lot. - David Goggins',
-            'My whole thing now is I know how to thonk properly to be successful in all aspects of my life. It`s not about ultra running or being a SEAL or pull-up records: it`s about if you want to be better, you have to change your perceived limitations and take the barriers down. - David Goggins',
+            'My whole thing now is I know how to think properly to be successful in all aspects of my life. It`s not about ultra running or being a SEAL or pull-up records: it`s about if you want to be better, you have to change your perceived limitations and take the barriers down. - David Goggins',
             'A man`s friendships are one of the best measures of his worth. - Charles Darwin',
             'At some future period. not very distant as measured by centuries, the civilized races of man will almost certainly exterminate, and replace the savage races throughout the world. - Charles Darwin',
-            'Ignorance more frequently begets confidence than does knowledge: it is those who know little, and not those who know much, who so positevely assert that this or that problem will never be solved by science. - Charles Darwin',
+            'Ignorance more frequently begets confidence than does knowledge: it is those who know little, and not those who know much, who so positively assert that this or that problem will never be solved by science. - Charles Darwin',
             'A scientific man ought to have no wishes, no affections. - a mere heart of stone. - Charles Darwin',
             'A man who dares to waste one hour of time has not discovered the value of life. - Charles Darwin',
             'To kill an error is as good as service as, and sometimes even better than the establishing of a new truth or fact. - Charles Darwin',
@@ -1313,11 +1330,11 @@
             'A merry heart doeth good like medicine. - King Solomon',
             'Kindness and faithfulness keep a king safe, through kindness his throne is made secure. - King Solomon',
             'Train up a child in the way that he should go, and when he is old, he will not depart from it. - King Solomon',
-            'A fool is wise in his eyes. - King Solomon',
+            'A fool is wise in his eyes. - King Solomon',          
             'To the mind that is still, the whole universe surrenders. - Lao Tzu',
             'The journey of a thousand miles begins with one step. - Lao Tzu',
             'Do the difficult things while they are easy and do the great things while they are small. - Lao Tzu',
-            'Life is a series of natural and spontaneous changes. Don`t resist them - that only creates sorrow. Let reality be reality. Let things flow naturaly forward in whatever way they like. - Lao Tzu',
+            'Life is a series of natural and spontaneous changes. Don`t resist them - that only creates sorrow. Let reality be reality. Let things flow naturally forward in whatever way they like. - Lao Tzu',
             'Mastering others is strength. Mastering yourself is true power. - Lao Tzu',
             'Nature does not hurry, yet everything is accomplished. - Lao Tzu',
             'When I let go of what I am, I become what I might be. - Lao Tzu',
@@ -1357,12 +1374,12 @@
             'Do nothing which is of no use. - Miyamoto Musashi',
             'Perceive that which cannot be seen with the eye. - Miyamoto Musashi',
             'All things entail rising and falling timing. You must be able to discern this. - Miyamoto Musashi',
-            'You wim battles by knowing the enemy`s timing, and using a timing which the enemy does not expect. - Miyamoto Musashi',
+            'You win battles by knowing the enemy`s timing and using a timing which the enemy does not expect. - Miyamoto Musashi',
             'Study strategy over the years and achieve the spirit of the warrior. Today is victory over yourself of yesterday, tomorrow is your victory over lesser men. - Miyamoto Musashi',
             'Generally speaking, the way of the warrior is resolute acceptance of death. - Miyamoto Musashi',
             'Three things cannot be long hidden: the sun, the moon, and the truth. - Buddha',
             'Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else, you are the one who gets burned. - Buddha',            
-            'Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared. - Buddha',
+            'Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared. - Buddha',
             'We are shaped by our thoughts, we become what we think. When the mind is pure, joy follows like a shadow that never leaves. - Buddha',
             'No one saves us but ourselves. No one can and no one may. We ourselves must walk the path. - Buddha',
             'To keep the body in good health is a duty...otherwise we shall not be able to keep our mind strong and clear. - Buddha',
@@ -1370,7 +1387,7 @@
             'The mind is everything. What you think you become. - Buddha',
             'It is better to conquer yourself than to win a thousand battles. Then the victory is yours. It cannot be taken from you, not by angels or by demons, nor heaven or hell. - Buddha',
             'Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. - Buddha',
-            'We are what we think. All that we are arises with our thoughts. With our thoughts, we make the world. - Buddha',
+            'We are what we think. All that we are arises from our thoughts. With our thoughts, we make the world. - Buddha',
             'You will not be punished for your anger, you will be punished by your anger. - Buddha',
             'I never see what has been done, I only see what remains to be done. - Buddha',
             'There are only two mistakes one can make along the road to truth, not going all the way, and not starting. - Buddha',
@@ -1381,22 +1398,22 @@
             'Even death is not to be feared by one who has lived wisely. - Buddha',
             'Do not overrate what you have received, nor envy others. He who envies others does not obtain peace of mind. - Buddha',
             'With fools, there is no companionship. Rather than to live with men who are selfish, vain, quarrelsome and obstinate, let a man walk alone. - Buddha',
-            'Whatevr words we utter should be chosen with care for people will hear them and be influenced by them for good or ill. - Buddha',
-            'Just as treasures are uncovered from the earth, so virtue appears from good deeds, and wisdom appears froma pure and peaceful mind. To walk safely through the maze of human life, one needs the light of wisdom and the guidance of virtue. - Buddha',
+            'Whatever words we utter should be chosen with care for people will hear them and be influenced by them for good or ill. - Buddha',
+            'Just as treasures are uncovered from the earth, so virtue appears from good deeds, and wisdom appears from a pure and peaceful mind. To walk safely through the maze of human life, one needs the light of wisdom and the guidance of virtue. - Buddha',
             'It is a man`s own mind, not his enemy or foe, that lures him to evil ways. - Buddha',
             'He who walks in the eightfold noble path with unswerving determination is sure to reach Nirvana. - Buddha',
             'A jug fills drop by drop. - Buddha',
             'To live a pure unselfish life, one must count nothing as one`s own in the midst of abundance. - Buddha',
             'Virtue is persecuted more by the wicked than it is loved by the good. - Buddha',
             'Chaos is inherent in all compounded things. Strive on with diligence. - Buddha',
-            'Without health life is not life, it is only a state of langour and suffering - an image of death. - Buddha',
-            'Better than a thousand hollow words, is one word that brings peace. - Buddha',
+            'Without health, life is not life, it is only a state of languor and suffering - an image of death. - Buddha',
+            'Better than a thousand hollow words is one word that brings peace. - Buddha',
             'Those who are free of resentful thoughts surely find peace. - Buddha',
             'Better than worshiping gods is obedience to the laws of righteousness. - Buddha',
             'The wise ones fashioned speech with their thought, sifting it as grain is sifted through a sieve. - Buddha',
             'My mama always used to tell me: `If you can`t find something to live for, you best find something to die for`. - Tupac Shakur',
             'I don`t have no fear of death. My only fear is coming back reincarnated. - Tupac Shakur',
-            'Is it a crime, to fight, for what is mine?. - Tupac Shakur',
+            'Is it a crime, to fight, for what is mine? - Tupac Shakur',
             'Don`t change on me. Don`t extort me unless you intend to do it forever. - Tupac Shakur',
             'Reality is wrong. Dreams are for real. - Tupac Shakur',
             'There`s nobody in the business strong enough to scare me. - Tupac Shakur',
@@ -1405,7 +1422,7 @@
             'I`ll probably be punished for hard living. - Tupac Shakur',
             'The great man is he who does not lose his child`s-heart. - Mencius',
             'Sincerity is the way to heaven. - Mencius',
-            'Truth uttered before it`s time is always dangerous. - Mencius',
+            'Truth uttered before its time is always dangerous. - Mencius',
             'Friends are the siblings God never gave us. - Mencius',
             'Mankind fears an evil man but heaven does not. - Mencius',
             'Let men decide firmly what they will not do, and they will be free to do vigorously what they ought to do. - Mencius',
@@ -1414,13 +1431,13 @@
             'One touch of nature makes the whole world kin. - William Shakespeare',
             'Some rise by sin, and some by virtue fall. - William Shakespeare',
             'No legacy is so rich as honesty. - William Shakespeare',
-            'If you prick us do we not bleed? If you tickle us do we not laugh? If you poison us do we not die? And if you wrong us shall we not revenge?. - William Shakespeare',
+            'If you prick us do we not bleed? If you tickle us do we not laugh? If you poison us do we not die? And if you wrong us shall we not revenge? - William Shakespeare',
             'It is a wise father that knows his own child. - William Shakespeare',
             'Some are born great, some achieve greatness, and some have greatness thrust upon them. - William Shakespeare',
             'All the world`s a stage, and all the men and women merely players: they have their exits and their entrances, and one man in his time plays many parts, his acts being seven ages. - William Shakespeare',
             'Cowards die many times before their deaths, the valiant never taste of death but once. - William Shakespeare',
             'Our doubts are traitors and make us lose the good we often might win by fearing to attempt. - William Shakespeare',
-            'With mirth and laughter led old wrinkles come. - William Shakespeare',
+            'With mirth and laughter let old wrinkles come. - William Shakespeare',
             'Ignorance is the curse of God, knowledge is the wing wherewith we fly to heaven. - William Shakespeare',
             'Better three hours too soon than a minute too late. - William Shakespeare',
             'We know what we are, but not what we may be. - William Shakespeare',
@@ -1432,7 +1449,7 @@
             'There`s no art to find the mind`s construction in the face. - William Shakespeare',
             'Talking isn`t doing. It is a kind of good deed to say well, and yet words are not deeds. - William Shakespeare',
             'When sorrows come, they come not single spies, but in battalions. - William Shakespeare',
-            'The robbed that smiles, steals something from the thief. - Willism Shakespeare',
+            'The robbed that smiles, steals something from the thief. - William Shakespeare',
             'To be, or not to be, that is the question. - William Shakespeare',
             'Virtue is bold, and goodness never fearful. - William Shakespeare',
             'I like not fair terms and a villain`s mind. - William Shakespeare',
@@ -1451,11 +1468,11 @@
             'It isn`t the mountains ahead to climb that wear you out, it`s the pebble in your show. - Muhammad Ali',
             'The man who has no imagination has no wings. - Muhammad Ali',
             'It`s not bragging if you can back it up. - Muhammad Ali',
-            'If you even fream of beating me you`d better wake up and apologise. - Muhammad Ali',
+            'If you even dream of beating me you`d better wake up and apologise. - Muhammad Ali',
             'Float like a butterfly, sting like a bee. - Muhammad Ali',
             'Hating people because of their colour is wrong. And it doesn`t matter which colour does the hating. It`s just plain wrong. - Muhammad Ali',
             'I know where I`m going and I know the truth, and I don`t have to be what you want me to be. I`m free to be what I want. - Muhammad Ali',
-            'It`s hard to be humble, when you`re as great as I am. - Muhammad Ali',
+            'It`s hard to be humble when you`re as great as I am. - Muhammad Ali',
             'Friendship...is not something you learn in school. But if you haven`t learned the meaning of friendship, you really haven`t learned anything. - Muhammad Ali',
             'Silence is golden when you can`t think of a good answer. - Muhammad Ali',
             'A man who views the world the same at fifty as he did at twenty has wasted thirty years of his life. - Muhammad Ali',
@@ -1473,10 +1490,9 @@
             'I am an ordinary man who worked hard to develop the talent I was given. I believed in myself, and I believe in the goodness of others. - Muhammad Ali',
             'The superior man understands what is right, the inferior man understands what will sell. - Confucius',
             'A superior man is modest in his speech, but exceeds in his actions. - Confucius',
-            'He who speaks without modesty will find it difficult to make his words good. - Confucius',
-            'I will not be concerned at other men`s not knowing me, I will be concerned at my own want of ability. - Confucius',
+            'He who speaks without modesty will find it difficult to make his words good. - Confucius',            'I will not be concerned at other men`s not knowing me, I will be concerned at my own want of ability. - Confucius',
             'The faults of a superior person are like the sun and the moon. They have their faults, and everyone sees them, they change and everyone looks up to them. - Confucius',
-            'Virtuous people often revenge themselves for the constrains to which they submit by the boredom which they inspire. - Confucius',
+            'Virtuous people often revenge themselves for the constraints to which they submit by the boredom which they inspire. - Confucius',
             'Faced with what is right, to leave it undone shows a lack of courage. - Confucius',
             'Speak the truth, do not yield to anger, give, if thou art asked for little, by these three steps thou wilt go near the gods. - Confucius',
             'If you talk to a man in a language he understands, that goes to his head. If you talk to him in his language, that goes to his heart. - Nelson Mandela',
@@ -1502,12 +1518,12 @@
             'Only free men can negotiate. A prisoner cannot enter into contracts. - Nelson Mandela',
             'Genius is eternal patience. - Michelangelo',
             'There is no greater harm than that of time wasted. - Michelangelo',
-            'The greater danger for most of us lies not in setting our aim too high and falling shirt, but in setting our aim too low, and achieving our mark. - Michelangelo',
+            'The greater danger for most of us lies not in setting our aim too high and falling short, but in setting our aim too low and achieving our mark. - Michelangelo',
             'If we have been pleased with life, we should not be displeased with death, since it comes from the hand of the same master. - Michelangelo',
             'Faith in oneself is the best and safest course. - Michelangelo',
-            'What do you despise? By this you are truly known. - Michelangelo',
-            'Of all men`s miseries the bitterest is this: to know so much and to have control over nothing. - Herodotus',
-            'Of all possessions a friend is the most precious. - Herodotus',
+            'What do you despise? By this, you are truly known. - Michelangelo',
+            'Of all men`s miseries, the bitterest is this: to know so much and to have control over nothing. - Herodotus',
+            'Of all possessions, a friend is the most precious. - Herodotus',
             'Circumstances rule men, men do not rule circumstances. - Herodotus',
             'The only good is knowledge, and the only evil is ignorance. - Herodotus',
             'Men trust their ears less than their eyes. - Herodotus',
@@ -1549,9 +1565,9 @@
             'Illness strikes men when they are exposed to change. - Herodotus',
             'As the old saw says well, every end does not appear together with its beginning. - Herodotus',
             'He is the best man who, when making his plans, fears and reflects on everything that can happen to him, but in the moment of action is bold. - Herodotus',
-            'But I like not these great success of yours, for I know how jealous are the gods. - Herodotus',
+            'But I like not these great successes of yours, for I know how jealous are the gods. - Herodotus',
             'Excess of grief for the dead is madness, for it is an injury to the living, and the dead know it not. - Xenophon',
-            'The true test of a leader is whether his followers will adhere to his cause from their own volition, enduring the most arduous hardships without being forced to do so, and remaining steadfast in the moments of greatest peril. - Xenophon',
+            'The true test of a leader is whether his followers will adhere to his cause of their own volition, enduring the most arduous hardships without being forced to do so, and remaining steadfast in the moments of greatest peril. - Xenophon',
             'Fast is fine, but accuracy is everything. - Xenophon',
             'The sweetest of all sounds is praise. - Xenophon',
             'If any among you covet riches, let him endeavour to overcome, for the victorious not only preserve their own possessions but acquire those of the enemy. - Xenophon',
@@ -1837,7 +1853,7 @@
             'After all is said and done, more is said than done. - Aesop',
             'Every truth has two sides, it is as well to look at both, before we commit ourselves to either. - Aesop',
             'It is easy to be brave from a safe distance. - Aesop',
-            'No act of kindness, no matter how small, is never wasted. - Aesop',
+            'No act of kindness, no matter how small, is ever wasted. - Aesop',
             'Persuasion is often more effectual than force. - Aesop',
             'Don`t let your special character and values, the secret that you know and no one else does, the truth - don`t let that get swallowed up by the great chewing complacency. - Aesop',
             'It is only fine feathers that make fine birds. - Aesop',
@@ -1898,7 +1914,7 @@
             'The days that are still to come are the wisest witnesses. - Pindar',
             'The present will not long endure. - Pindar',
             'Men are the dreams of a shadow. - Pindar',
-            'Not every truth is the better for showing it`s face undisguised, and often silence is the wisest thing for a man to heed. - Pindar',
+            'Not every truth is the better for showing its face undisguised, and often silence is the wisest thing for a man to heed. - Pindar',
             'Even wisdom has to yield to self-interest. - Pindar',
             'Whatever is beautiful is beautiful by necessity. - Pindar',
             'There is nothing permanent except change. - Heraclitus',
@@ -1912,7 +1928,7 @@
             'The hidden harmony is better than the obvious. - Heraclitus',
             'Much learning does not teach understanding. - Heraclitus',
             'No one that encounters prosperity does not also encounter danger. - Heraclitus',
-            'Men who wish to know about the world must learn about it in it`s particular details. - Heraclitus',
+            'Men who wish to know about the world must learn about it in its particular details. - Heraclitus',
             'The eyes are more exact witnesses than the ears. - Heraclitus',
             'Bigotry is the sacred disease. - Heraclitus',
             'The desire for safety stands against every great and noble enterprise. - Tacitus',
@@ -2052,7 +2068,7 @@
             'The chief beginning of evil is goodness in excess. - Menander',
             'Intelligence, if it is clever in the direction of the better, is responsible for the greatest benefits of all. - Menander',
             '`Tis always best to tell the truth. At every crisis, I recommend this as a chief contribution to security in life. - Menander',
-            'He who labours diligently need never despair, for all things are accomplished by dilligence and labour. - Menander',
+            'He who labours diligently need never despair, for all things are accomplished by diligence and labour. - Menander',
             'The sword the body wounds, sharp words the mind. - Menander',
             'The character of a man is known from his conversations. - Menander',
             'Culture makes all men gentle. - Menander',
@@ -2113,7 +2129,7 @@
             'No enterprise is more likely to succeed than one concealed from the enemy until it is ripe for execution. - Niccolo Machiavelli',
             'Benefits should be confered gradually, and in that way, they will taste better. - Niccolo Machiavelli',
             'Men shrink less from offending one who inspires love than one who inspires fear. - Niccolo Machiavelli',
-            'Tardiness often robs us opportunity and the dispatch of our forces. - Niccolo Machiavelli',
+            'Tardiness often robs us of opportunity and the dispatch of our forces. - Niccolo Machiavelli',
             'Intelligence without ambition is a bird without wings. - Salvador Dali',
             'Have no fear of perfection - you`ll never reach it. - Salvador Dali',
             'Those who do not want to imitate anything, produce nothing. - Salvador Dali',
@@ -2183,22 +2199,30 @@
             'Drunkenness is nothing but voluntary madness. - Seneca',
             'We never reflect how pleasant it is to ask for nothing. - Seneca',
             'Just as I shall select my ship when I am about to go on a voyage, or my house when I propose to take residence, so shall I choose my death when I am about to depart from life. - Seneca',
-      ];
-   
+    ];
+    function showRandomQuote() {
+      // Function to show a random quote
+      const index = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[index];
+      document.getElementById("quote-container").innerHTML = `<p>${quote}</p>`;
+    }
 
-      function showRandomQuote() {
-        // Generate a random index between 0 and the number of quotes
-        const index = Math.floor(Math.random() * quotes.length);
-     
-        // Get the quote at the random index
-        const quote = quotes[index];
-     
-        // Update the HTML of the quote container element with the random quote
-        document.getElementById("quote-container").innerHTML = `<p>${quote}</p>`;
+    function toggleDropdown() {
+      // Function to toggle the visibility of the dropdown content
+      const dropdownContent = document.getElementById("dropdownContent");
+      dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("click", function(event) {
+      // Event listener to hide the dropdown content when clicking outside
+      const dropdown = document.getElementsByClassName("dropdown")[0];
+      if (!dropdown.contains(event.target)) {
+        const dropdownContent = document.getElementById("dropdownContent");
+        dropdownContent.style.display = "none";
       }
-     
-      // Show a random quote when the page is loaded
-      showRandomQuote();
-    </script>
-  </body>
+    });
+
+    showRandomQuote();
+  </script>
+</body>
 </html>
