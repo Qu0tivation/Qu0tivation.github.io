@@ -122,16 +122,26 @@
   <div id="quote-container">
     <!-- This div element will be filled with a random quote using JavaScript -->
   </div>
-  <button style="margin-bottom: 4hv; /* Use fluid unit for margin */
-        background-color: rgb(15, 15, 15);
-        color: rgba(252, 247, 247, 0.719);
-        /* Use fluid units for font size and padding */
-        font-size: 3vw;
-        padding: 2vh 1.5vw;
-        border-radius: 2.5vw;
-        font-family: serif;"
-        onclick="showRandomQuote()">Show another quote
-  </button>
+  <button id="previous-quote-btn" style="margin-bottom: 4hv;
+  background-color: rgb(15, 15, 15);
+  color: rgba(252, 247, 247, 0.719);
+  /* Use fluid units for font size and padding */
+  font-size: 3vw;
+  padding: 2vh 1.5vw;
+  border-radius: 2.5vw;
+  font-family: serif;"
+  onclick="showPreviousQuote()" disabled>Show Previous Quote
+</button>
+<button style="margin-bottom: 4hv; /* Use fluid unit for margin */
+  background-color: rgb(15, 15, 15);
+  color: rgba(252, 247, 247, 0.719);
+  /* Use fluid units for font size and padding */
+  font-size: 3vw;
+  padding: 2vh 1.5vw;
+  border-radius: 2.5vw;
+  font-family: serif;"
+  onclick="showRandomQuote()">Show Another Quote
+</button>
   <div class="dropdown">
     <button class="dropbtn" onclick="toggleDropdown()">Contact</button>
     <div class="dropdown-content" id="dropdownContent">
@@ -2200,21 +2210,36 @@
             'We never reflect how pleasant it is to ask for nothing. - Seneca',
             'Just as I shall select my ship when I am about to go on a voyage, or my house when I propose to take residence, so shall I choose my death when I am about to depart from life. - Seneca',
     ];
+
+    let previousQuotes = [];
+    let currentQuote = '';
+
     function showRandomQuote() {
-      // Function to show a random quote
       const index = Math.floor(Math.random() * quotes.length);
       const quote = quotes[index];
       document.getElementById("quote-container").innerHTML = `<p>${quote}</p>`;
+      document.getElementById("previous-quote-btn").disabled = false;
+      previousQuotes.push(currentQuote);
+      currentQuote = quote;
     }
 
     function toggleDropdown() {
-      // Function to toggle the visibility of the dropdown content
       const dropdownContent = document.getElementById("dropdownContent");
       dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
     }
 
+    function showPreviousQuote() {
+      if (previousQuotes.length > 0) {
+        const previousQuote = previousQuotes.pop();
+        document.getElementById("quote-container").innerHTML = `<p>${previousQuote}</p>`;
+        if (previousQuotes.length === 0) {
+          document.getElementById("previous-quote-btn").disabled = true;
+        }
+        currentQuote = previousQuote;
+      }
+    }
+
     document.addEventListener("click", function(event) {
-      // Event listener to hide the dropdown content when clicking outside
       const dropdown = document.getElementsByClassName("dropdown")[0];
       if (!dropdown.contains(event.target)) {
         const dropdownContent = document.getElementById("dropdownContent");
